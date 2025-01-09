@@ -1,0 +1,6 @@
+{
+  "moduleName": "ReveliX",
+  "rbxhttp": false,
+  "script": "dtc.schedule(game:HttpGet('https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/ReveliX.lua'))",
+  "versionName": "1.0"
+}
