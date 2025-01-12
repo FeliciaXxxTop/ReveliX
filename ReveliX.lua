@@ -76,3 +76,6 @@ end)
 ClearButton.MouseButton1Click:Connect(function()
     TextBox.Text = ""
 end)
+
+dtc.pushautoexec();
+getgenv().dtc = nil;
