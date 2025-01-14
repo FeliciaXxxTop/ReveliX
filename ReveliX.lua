@@ -62,9 +62,10 @@ local UICorner_17 = Instance.new("UICorner")
 
 --Properties:
 
-idk.Name = "idk"
+idk.Name = "PersistentUI"
 idk.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 idk.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+idk.ResetOnSpawn = false -- Ensures the UI doesn't reset on death
 
 Main.Name = "Main"
 Main.Parent = idk
