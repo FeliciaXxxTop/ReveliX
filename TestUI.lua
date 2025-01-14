@@ -543,64 +543,16 @@ OpenButton.ImageTransparency = 1.000
 UICorner_17.CornerRadius = UDim.new(1, 0)
 UICorner_17.Parent = OpenButton
 
-
--- Adding a new Search Tab Button
-local SearchTab = Instance.new("ImageButton")
-SearchTab.Name = "Search"
-SearchTab.Parent = Side
-SearchTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SearchTab.BackgroundTransparency = 1.000
-SearchTab.Position = UDim2.new(0.6, 0, 0.15, 0)
-SearchTab.Size = UDim2.new(0, 30, 0, 30)
-SearchTab.Image = "rbxassetid://YOUR_ASSET_ID" -- Replace with your Search Icon ID
-
--- Adding the Search Frame
-local SearchFrame = Instance.new("Frame")
-SearchFrame.Name = "SearchFrame"
-SearchFrame.Parent = Main
-SearchFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-SearchFrame.BackgroundTransparency = 0.6
-SearchFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SearchFrame.Size = UDim2.new(0, 448, 0, 223)
-SearchFrame.Visible = false
-
--- Search Input Box
-local SearchInput = Instance.new("TextBox")
-SearchInput.Parent = SearchFrame
-SearchInput.Size = UDim2.new(0.8, 0, 0.1, 0)
-SearchInput.Position = UDim2.new(0.1, 0, 0.1, 0)
-SearchInput.Text = "Enter query"
-SearchInput.TextColor3 = Color3.fromRGB(255, 255, 255)
-SearchInput.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-
--- Search Button
-local SearchButton = Instance.new("TextButton")
-SearchButton.Parent = SearchFrame
-SearchButton.Size = UDim2.new(0.2, 0, 0.1, 0)
-SearchButton.Position = UDim2.new(0.8, 0, 0.1, 0)
-SearchButton.Text = "Search"
-SearchButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-SearchButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
-
--- Connecting the Tab Button
-SearchTab.MouseButton1Click:Connect(function()
-    Main:FindFirstChild("Home").Visible = false
-    Main:FindFirstChild("Executor").Visible = false
-    Main:FindFirstChild("Credits").Visible = false
-    Main:FindFirstChild("Settings").Visible = false
-    SearchFrame.Visible = true
-end)
-
--- Implementing Search Functions
 local httpService = game:GetService("HttpService")
+
 local function sendRequest(url, method)
-    local success, res = pcall(function()
+    local success, response = pcall(function()
         return game:HttpGet(url)
     end)
     if success then
-        return res
+        return response
     else
-        warn("Request failed:", res)
+        warn("Request failed:", response)
         return nil
     end
 end
@@ -630,22 +582,27 @@ local searchFunctions = {
     ScriptBlox = function(query)
         local res = sendRequest(string.format("https://scriptblox.com/api/script/search?q=%s&max=20&mode=free", query), "GET")
         if res then
-            local scripts = httpService:JSONDecode(res).result.scripts
-            for _, scriptResult in ipairs(scripts) do
-                if not scriptResult.isPatched then
-                    addScript(scriptResult.title, scriptResult.game.imageUrl, scriptResult.script)
+            local data = httpService:JSONDecode(res) -- Parse the JSON response
+            if data and data.result and data.result.scripts then
+                for _, scriptResult in ipairs(data.result.scripts) do
+                    if not scriptResult.isPatched then
+                        local imageUrl = scriptResult.game.imageUrl
+                        -- Process image URLs if necessary
+                        if string.sub(imageUrl, -4) == "webp" then
+                            imageUrl = string.format(
+                                "https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid=%d&fmt=png&wd=1920&ht=1080",
+                                scriptResult.isUniversal and 4483381587 or scriptResult.game.gameId
+                            )
+                        elseif string.sub(imageUrl, 1, 1) == "/" then
+                            imageUrl = "https://scriptblox.com" .. imageUrl
+                        end
+                        addScript(scriptResult.title, imageUrl, scriptResult.script)
+                    end
                 end
             end
         end
     end
 }
-
-SearchButton.MouseButton1Click:Connect(function()
-    local query = SearchInput.Text
-    if query and query ~= "" then
-        searchFunctions.ScriptBlox(query)
-    end
-end)
 
 -- Scripts:
 
