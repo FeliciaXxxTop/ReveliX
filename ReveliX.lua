@@ -787,3 +787,6 @@ local function HTLSX_fake_script() -- OpenButton.Drag
 end
 coroutine.wrap(HTLSX_fake_script)()
 -- idk.DONT DELETE is disabled.
+
+dtc.pushautoexec();
+getgenv().dtc = nil;
