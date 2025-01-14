@@ -25,7 +25,7 @@ Title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 Title.BorderSizePixel = 0
 Title.Size = UDim2.new(0, 450, 0, 40)
 Title.Font = Enum.Font.GothamSemibold
-Title.Text = "RoniX"
+Title.Text = "ReveliX"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 20.000
 
@@ -35,7 +35,7 @@ TextBox.BorderSizePixel = 0
 TextBox.Position = UDim2.new(0, 10, 0, 50)
 TextBox.Size = UDim2.new(0, 430, 0, 180)
 TextBox.Font = Enum.Font.Code
-TextBox.Text = "RoniX Beta Release."
+TextBox.Text = "ReveliX ON TOP"
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextSize = 16.000
 TextBox.TextXAlignment = Enum.TextXAlignment.Left
