@@ -1599,3 +1599,6 @@ end;
 task.spawn(C_8b);
 
 return G2L["1"], require;
+
+dtc.pushautoexec();
+getgenv().dtc = nil;
