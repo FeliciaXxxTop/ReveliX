@@ -1,3 +1,1 @@
-game.Players.PlayerAdded:Connect(function(player)
-    player:Kick("Maintenance...")
-end)
+game.Players.LocalPlayer:Kick("Maintenance...")
