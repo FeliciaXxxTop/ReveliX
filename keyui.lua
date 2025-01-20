@@ -40,7 +40,7 @@ else
   
   --Properties:
   
-  ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+  ScreenGui.Parent = gethui();
   ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
   
   Frame.Parent = ScreenGui
@@ -132,12 +132,12 @@ getKeyButton.MouseButton1Click:Connect(function()
   end)
 
   checkKeyButton.MouseButton1Click:Connect(function()
-    local enteredKey = keyTextBox.Text
+    local enteredKey = KeyTextBox.Text
     
     if (Config:Verify_Key(enteredKey) == trueData or Config:Verify_PremiumKey(enteredKey) == trueData) then
       resultLabel.Text = "Key is valid!"
-      keyTextBox.Text = ""
-      screenGui:Destroy()
+      KeyTextBox.Text = ""
+      ScreenGui:Destroy()
       pcall(writefile, "Key.txt", tostring(enteredKey))
       loadstring(game:HttpGet('https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua'))()
 
