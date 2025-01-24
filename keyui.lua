@@ -1,13 +1,10 @@
 local Config = loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Main/refs/heads/main/Library/Key%20System/KeyGuardian_API.lua"))()
 
-local trueData = "eaee370a5df94fe083b60c4cddcc9551"
-local falseData = "ca6fd45c61e046248f1fde7c21afc4bd"
-
-Config:SetTable({
-  publicToken = "5fb61e4f17e4455eb2fb8065a44a7b96",
-  privateToken = "81c3fe87f9ea4896845f585bbdb03ccb",
-  trueData = trueData,
-  falseData = falseData
+local KeySys = Config:Start({
+    publicToken = "5fb61e4f17e4455eb2fb8065a44a7b96",
+    privateToken = "81c3fe87f9ea4896845f585bbdb03ccb",
+    trueData = "eaee370a5df94fe083b60c4cddcc9551",
+    falseData = "ca6fd45c61e046248f1fde7c21afc4bd"
 })
 
 local _auto = clonefunction(dtc.pushautoexec);
@@ -22,7 +19,7 @@ getgenv().gethui = function()
 	return game.CoreGui
 end
 
-if isfile("Key.txt") and (Config:Verify_Key(readfile("Key.txt")) == trueData or Config:Verify_PremiumKey(readfile("Key.txt")) == trueData) then
+if isfile("Key.txt") and (KeySys:Verify_Key(readfile("Key.txt")) == trueData or KeySys:Verify_PremiumKey(readfile("Key.txt")) == trueData) then
   _auto()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua"))()
 else
@@ -40,7 +37,7 @@ else
   
   --Properties:
   
-  ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+  ScreenGui.Parent = gethui();
   ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
   
   Frame.Parent = ScreenGui
@@ -123,7 +120,7 @@ else
 
 getKeyButton.MouseButton1Click:Connect(function()
     local Succ = pcall(function()
-      setclipboard(Config:GetLinkKey())
+      setclipboard(KeySys:GetLinkKey())
     end)
 
     if Succ then
@@ -132,12 +129,12 @@ getKeyButton.MouseButton1Click:Connect(function()
   end)
 
   checkKeyButton.MouseButton1Click:Connect(function()
-    local enteredKey = keyTextBox.Text
+    local enteredKey = KeyTextBox.Text
     
-    if (Config:Verify_Key(enteredKey) == trueData or Config:Verify_PremiumKey(enteredKey) == trueData) then
+    if (KeySys:Verify_Default(enteredKey) == trueData or KeySys:Verify_PremiumKey(enteredKey) == trueData) then
       resultLabel.Text = "Key is valid!"
-      keyTextBox.Text = ""
-      screenGui:Destroy()
+      KeyTextBox.Text = ""
+      ScreenGui:Destroy()
       pcall(writefile, "Key.txt", tostring(enteredKey))
       loadstring(game:HttpGet('https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua'))()
 
