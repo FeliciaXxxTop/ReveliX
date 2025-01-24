@@ -1,7 +1,7 @@
 {
   "moduleName": "ReveliX",
   "rbxhttp": true,
-  "script": "dtc.schedule(game:HttpGet('https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua'))",
+  "script": "dtc.schedule(game:HttpGet('https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/keyui.lua'))",
   "versionName": "2.0",
   "keysystem": "false"
 }
