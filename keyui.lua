@@ -19,7 +19,7 @@ getgenv().gethui = function()
 	return game.CoreGui
 end
 
-if isfile("Key.txt") and (KeySys:Verify_Key(readfile("FrostWare_Key.txt")) == trueData or KeySys:Verify_PremiumKey(readfile("FrostWare_Key.txt")) == trueData) then
+if isfile("Key.txt") and (KeySys:Verify_Key(readfile("Key.txt")) == trueData or KeySys:Verify_PremiumKey(readfile("Key.txt")) == trueData) then
   _auto()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua"))()
 else
@@ -135,7 +135,7 @@ getKeyButton.MouseButton1Click:Connect(function()
       resultLabel.Text = "Key is valid!"
       KeyTextBox.Text = ""
       ScreenGui:Destroy()
-      pcall(writefile, "FrostWare_Key.txt", tostring(enteredKey))
+      pcall(writefile, "Key.txt", tostring(enteredKey))
       loadstring(game:HttpGet('https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua'))()
 
       _auto();
