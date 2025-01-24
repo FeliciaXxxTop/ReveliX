@@ -1,10 +1,10 @@
 local Config = loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Main/refs/heads/main/Library/Key%20System/KeyGuardian_API.lua"))()
 
 local KeySys = Config:Start({
-    publicToken = "5fb61e4f17e4455eb2fb8065a44a7b96",
-    privateToken = "81c3fe87f9ea4896845f585bbdb03ccb",
-    trueData = "eaee370a5df94fe083b60c4cddcc9551",
-    falseData = "ca6fd45c61e046248f1fde7c21afc4bd"
+  publicToken = "5fb61e4f17e4455eb2fb8065a44a7b96",
+  privateToken = "81c3fe87f9ea4896845f585bbdb03ccb",
+  trueData = "eaee370a5df94fe083b60c4cddcc9551",
+  falseData = "ca6fd45c61e046248f1fde7c21afc4bd"
 })
 
 local _auto = clonefunction(dtc.pushautoexec);
@@ -19,7 +19,7 @@ getgenv().gethui = function()
 	return game.CoreGui
 end
 
-if isfile("Key.txt") and (KeySys:Verify_Key(readfile("Key.txt")) == trueData or KeySys:Verify_PremiumKey(readfile("Key.txt")) == trueData) then
+if isfile("Key_ReveliX.txt") and (KeySys:Verify_Default(readfile("Key_ReveliX.txt")) == true or KeySys:Verify_Premium(readfile("Key_ReveliX.txt")) == true) then
   _auto()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua"))()
 else
@@ -120,7 +120,7 @@ else
 
 getKeyButton.MouseButton1Click:Connect(function()
     local Succ = pcall(function()
-      setclipboard(KeySys:GetLinkKey())
+      setclipboard(KeySys:GetKeyLink())
     end)
 
     if Succ then
@@ -131,11 +131,11 @@ getKeyButton.MouseButton1Click:Connect(function()
   checkKeyButton.MouseButton1Click:Connect(function()
     local enteredKey = KeyTextBox.Text
     
-    if (KeySys:Verify_Default(enteredKey) == trueData or KeySys:Verify_PremiumKey(enteredKey) == trueData) then
+    if (KeySys:Verify_Default(enteredKey) == true or KeySys:Verify_Premium(enteredKey) == true) then
       resultLabel.Text = "Key is valid!"
       KeyTextBox.Text = ""
       ScreenGui:Destroy()
-      pcall(writefile, "Key.txt", tostring(enteredKey))
+      pcall(writefile, "Key_ReveliX.txt", tostring(enteredKey))
       loadstring(game:HttpGet('https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua'))()
 
       _auto();
