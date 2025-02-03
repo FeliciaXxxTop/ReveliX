@@ -1,1 +1,1 @@
-game.Players.LocalPlayer:Kick("Maintenance...")
+game.Players.LocalPlayer:Kick("Discontinued.")
