@@ -21,7 +21,7 @@ end
 
 if isfile("Key_ReveliX.txt") and (KeySys:Verify_Default(readfile("Key_ReveliX.txt")) == true or KeySys:Verify_Premium(readfile("Key_ReveliX.txt")) == true) then
   _auto()
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua"))()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
 else
   local ScreenGui = Instance.new("ScreenGui")
   local Frame = Instance.new("Frame")
@@ -136,7 +136,7 @@ getKeyButton.MouseButton1Click:Connect(function()
       KeyTextBox.Text = ""
       ScreenGui:Destroy()
       pcall(writefile, "Key_ReveliX.txt", tostring(enteredKey))
-      loadstring(game:HttpGet('https://raw.githubusercontent.com/NotB1itz/ReveliX/refs/heads/main/Ui.lua'))()
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua'))()
 
       _auto();
     else
