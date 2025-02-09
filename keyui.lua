@@ -1,146 +1,220 @@
-local Config = loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Main/refs/heads/main/Library/Key%20System/KeyGuardian_API.lua"))()
-
-local KeySys = Config:Start({
-  publicToken = "5fb61e4f17e4455eb2fb8065a44a7b96",
-  privateToken = "81c3fe87f9ea4896845f585bbdb03ccb",
-  trueData = "eaee370a5df94fe083b60c4cddcc9551",
-  falseData = "ca6fd45c61e046248f1fde7c21afc4bd"
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local KeyReveliX = loadstring(game:HttpGet("https://cdn.keyguardian.org/library/v1.0.0.lua"))()
+local trueData = "eaee370a5df94fe083b60c4cddcc9551"
+local falseData = "ca6fd45c61e046248f1fde7c21afc4bd"
+KeyReveliX.Set({
+    publicToken = "5fb61e4f17e4455eb2fb8065a44a7b96",
+    privateToken = "81c3fe87f9ea4896845f585bbdb03ccb",
+    trueData = trueData,
+    falseData = falseData,
 })
-
-local _auto = clonefunction(dtc.pushautoexec);
-
-setreadonly(dtc, false);
-dtc.auth = nil;
-dtc.flow = nil;
-dtc.pushautoexec = nil;
-setreadonly(dtc, true);
-
-getgenv().gethui = function()
-	return game.CoreGui
-end
-
-if isfile("Key_ReveliX.txt") and (KeySys:Verify_Default(readfile("Key_ReveliX.txt")) == true or KeySys:Verify_Premium(readfile("Key_ReveliX.txt")) == true) then
-  _auto()
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
-else
-  local ScreenGui = Instance.new("ScreenGui")
-  local Frame = Instance.new("Frame")
-  local UICorner = Instance.new("UICorner")
-  local checkKeyButton = Instance.new("TextButton")
-  local UICorner_2 = Instance.new("UICorner")
-  local getKeyButton = Instance.new("TextButton")
-  local UICorner_3 = Instance.new("UICorner")
-  local TextLabel = Instance.new("TextLabel")
-  local KeyTextBox = Instance.new("TextBox")
-  local UICorner_4 = Instance.new("UICorner")
-  local resultLabel = Instance.new("TextLabel")
-  
-  --Properties:
-  
-  ScreenGui.Parent = gethui();
-  ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  
-  Frame.Parent = ScreenGui
-  Frame.BackgroundColor3 = Color3.fromRGB(43, 47, 53)
-  Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-  Frame.BorderSizePixel = 0
-  Frame.Position = UDim2.new(0.304147989, 0, 0.21354194, 0)
-  Frame.Size = UDim2.new(0, 259, 0, 170)
-  
-  UICorner.Parent = Frame
-  
-  checkKeyButton.Name = "checkKeyButton"
-  checkKeyButton.Parent = Frame
-  checkKeyButton.BackgroundColor3 = Color3.fromRGB(62, 67, 76)
-  checkKeyButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-  checkKeyButton.BorderSizePixel = 0
-  checkKeyButton.Position = UDim2.new(0.0694980696, 0, 0.59632355, 0)
-  checkKeyButton.Size = UDim2.new(0, 102, 0, 50)
-  checkKeyButton.AutoButtonColor = false
-  checkKeyButton.Font = Enum.Font.SourceSans
-  checkKeyButton.Text = "Check key"
-  checkKeyButton.TextColor3 = Color3.fromRGB(254, 254, 254)
-  checkKeyButton.TextSize = 14.000
-  
-  UICorner_2.Parent = checkKeyButton
-  
-  getKeyButton.Name = "getKeyButton"
-  getKeyButton.Parent = Frame
-  getKeyButton.BackgroundColor3 = Color3.fromRGB(62, 67, 76)
-  getKeyButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-  getKeyButton.BorderSizePixel = 0
-  getKeyButton.Position = UDim2.new(0.536679566, 0, 0.59632355, 0)
-  getKeyButton.Size = UDim2.new(0, 102, 0, 50)
-  getKeyButton.AutoButtonColor = false
-  getKeyButton.Font = Enum.Font.SourceSans
-  getKeyButton.Text = "Get key"
-  getKeyButton.TextColor3 = Color3.fromRGB(254, 254, 254)
-  getKeyButton.TextSize = 14.000
-  
-  UICorner_3.Parent = getKeyButton
-  
-  TextLabel.Parent = Frame
-  TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-  TextLabel.BackgroundTransparency = 1.000
-  TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-  TextLabel.BorderSizePixel = 0
-  TextLabel.Position = UDim2.new(0.111969113, 0, 0, 0)
-  TextLabel.Size = UDim2.new(0, 200, 0, 24)
-  TextLabel.Font = Enum.Font.SourceSans
-  TextLabel.Text = "ReveliX Key System"
-  TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-  TextLabel.TextSize = 14.000
-  
-  KeyTextBox.Name = "KeyTextBox"
-  KeyTextBox.Parent = Frame
-  KeyTextBox.BackgroundColor3 = Color3.fromRGB(62, 67, 76)
-  KeyTextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-  KeyTextBox.BorderSizePixel = 0
-  KeyTextBox.Position = UDim2.new(0.0689999983, 0, 0.170000002, 0)
-  KeyTextBox.Size = UDim2.new(0, 222, 0, 51)
-  KeyTextBox.Font = Enum.Font.SourceSans
-  KeyTextBox.Text = ""
-  KeyTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-  KeyTextBox.TextSize = 14.000
-  
-  UICorner_4.Parent = KeyTextBox
-  
-  resultLabel.Name = "resultLabel"
-  resultLabel.Parent = Frame
-  resultLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-  resultLabel.BackgroundTransparency = 1.000
-  resultLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-  resultLabel.BorderSizePixel = 0
-  resultLabel.Position = UDim2.new(0.108108111, 0, 0.464705884, 0)
-  resultLabel.Size = UDim2.new(0, 200, 0, 24)
-  resultLabel.Font = Enum.Font.SourceSans
-  resultLabel.Text = "just do the key Devs are broke"
-  resultLabel.TextColor3 = Color3.fromRGB(173, 173, 173)
-  resultLabel.TextSize = 12.000
-
-getKeyButton.MouseButton1Click:Connect(function()
-    local Succ = pcall(function()
-      setclipboard(KeySys:GetKeyLink())
-    end)
-
-    if Succ then
-      resultLabel.Text = "Key link copied to clipboard!"  
+local X = {} do
+    X.Folder = "FW"
+    function X:SetFolder(folder)
+        self.Folder = folder
+        self:BuildFolderTree()
     end
-  end)
-
-  checkKeyButton.MouseButton1Click:Connect(function()
-    local enteredKey = KeyTextBox.Text
-    
-    if (KeySys:Verify_Default(enteredKey) == true or KeySys:Verify_Premium(enteredKey) == true) then
-      resultLabel.Text = "Key is valid!"
-      KeyTextBox.Text = ""
-      ScreenGui:Destroy()
-      pcall(writefile, "Key_ReveliX.txt", tostring(enteredKey))
-      loadstring(game:HttpGet('https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua'))()
-
-      _auto();
+    function X:BuildFolderTree()
+        local paths = {
+            self.Folder,
+            self.Folder .. "/KeySystemReveliX"
+        }
+        for i = 1, #paths do
+            local str = paths[i]
+            if not isfolder(str) then
+                makefolder(str)
+            end
+        end
+        if not isfile(self.Folder .. "/KeySystemReveliX/KeyReveliXDefault.txt") then
+            writefile(self.Folder .. "/KeySystemReveliX/KeyReveliXDefault.txt", "")
+        end
+        if not isfile(self.Folder .. "/KeySystemReveliX/KeyReveliXPremium.txt") then
+            writefile(self.Folder .. "/KeySystemReveliX/KeyReveliXPremium.txt", "")
+        end
+    end
+    X:BuildFolderTree()
+    function X:SaveKey(key, isPremium)
+        local fileName = isPremium and "KeyReveliXPremium.txt" or "KeyReveliXDefault.txt"
+        writefile(self.Folder .. "/KeySystemReveliX/" .. fileName, key)
+    end
+    function X:GetSavedKey(isPremium)
+        local fileName = isPremium and "KeyReveliXPremium.txt" or "KeyReveliXDefault.txt"
+        if isfile(self.Folder .. "/KeySystemReveliX/" .. fileName) then
+            return readfile(self.Folder .. "/KeySystemReveliX/" .. fileName)
+        else
+            return ""
+        end
+    end
+end
+local savedKeyDefault = X:GetSavedKey(false)
+local savedKeyPremium = X:GetSavedKey(true)
+if savedKeyDefault ~= "" then
+    local response = KeyReveliX.validateDefaultKey(savedKeyDefault)
+    if response == trueData then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+        return
+    end
+end
+if savedKeyPremium ~= "" then
+    local premiumResponse = KeyReveliX.validatePremiumKey(savedKeyPremium)
+    if premiumResponse == trueData then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+        return
+    end
+end
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = Player:WaitForChild("PlayerGui")
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+Frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+Frame.Size = UDim2.new(0, 300, 0, 210)  
+Frame.BorderSizePixel = 0
+Frame.Active = true
+Frame.Draggable = true  
+local UICorner = Instance.new("UICorner", Frame)
+UICorner.CornerRadius = UDim.new(0, 10)
+local UIStroke = Instance.new("UIStroke", Frame)
+UIStroke.Thickness = 2
+UIStroke.Color = Color3.fromRGB(0, 0, 0) 
+local Title = Instance.new("TextLabel")
+Title.Parent = Frame
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1, 0, 0, 30)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "ReveliX"
+Title.TextColor3 = Color3.fromRGB(180, 180, 180) 
+Title.TextSize = 20
+local Line = Instance.new("Frame")
+Line.Parent = Frame
+Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255) 
+Line.Position = UDim2.new(0, 0, 0, 30)
+Line.Size = UDim2.new(1, 0, 0, 1)
+Line.BorderSizePixel = 0
+local MessageLabel = Instance.new("TextLabel")
+MessageLabel.Parent = Frame
+MessageLabel.BackgroundTransparency = 1
+MessageLabel.Position = UDim2.new(0.1, 0, 0.22, 0) 
+MessageLabel.Size = UDim2.new(0.8, 0, 0, 50)  
+MessageLabel.Font = Enum.Font.Gotham
+MessageLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+MessageLabel.TextSize = 14
+MessageLabel.Text = "Please get a key to activate ReveliX. Good luck!"
+MessageLabel.TextYAlignment = Enum.TextYAlignment.Top
+MessageLabel.TextWrapped = true  
+local EnterKeyBox = Instance.new("TextBox")
+EnterKeyBox.Parent = Frame
+EnterKeyBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+EnterKeyBox.Position = UDim2.new(0.1, 0, 0.40, 0)
+EnterKeyBox.Size = UDim2.new(0.8, 0, 0, 30)
+EnterKeyBox.Font = Enum.Font.Gotham
+EnterKeyBox.Text = ""
+EnterKeyBox.TextColor3 = Color3.fromRGB(220, 220, 220)
+EnterKeyBox.TextSize = 14
+EnterKeyBox.TextWrapped = true  
+EnterKeyBox.TextXAlignment = Enum.TextXAlignment.Center 
+EnterKeyBox.TextYAlignment = Enum.TextYAlignment.Center 
+EnterKeyBox.PlaceholderText = "Enter your key here..."
+EnterKeyBox.PlaceholderColor3 = Color3.fromRGB(120, 120, 120)
+local EnterKeyBoxUICorner = Instance.new("UICorner", EnterKeyBox)
+EnterKeyBoxUICorner.CornerRadius = UDim.new(0, 5)
+local ResultLabel = Instance.new("TextLabel")
+ResultLabel.Parent = Frame
+ResultLabel.BackgroundTransparency = 1
+ResultLabel.Position = UDim2.new(0.1, 0, 0.55, 0)  
+ResultLabel.Size = UDim2.new(0.8, 0, 0, 25)
+ResultLabel.Font = Enum.Font.GothamBold
+ResultLabel.TextColor3 = Color3.fromRGB(255, 50, 50)
+ResultLabel.TextSize = 14
+ResultLabel.Text = ""
+local GetKeyButton = Instance.new("TextButton")
+GetKeyButton.Parent = Frame
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+GetKeyButton.Position = UDim2.new(0.1, 0, 0.70, 0)  
+GetKeyButton.Size = UDim2.new(0.35, 0, 0, 30)
+GetKeyButton.Font = Enum.Font.GothamBold
+GetKeyButton.Text = "Get Key"
+GetKeyButton.TextColor3 = Color3.fromRGB(180, 180, 180)
+GetKeyButton.TextSize = 14
+local GetKeyUICorner = Instance.new("UICorner", GetKeyButton)
+GetKeyUICorner.CornerRadius = UDim.new(0, 5)
+local CheckKeyButton = Instance.new("TextButton")
+CheckKeyButton.Parent = Frame
+CheckKeyButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+CheckKeyButton.Position = UDim2.new(0.55, 0, 0.70, 0)  
+CheckKeyButton.Size = UDim2.new(0.35, 0, 0, 30)
+CheckKeyButton.Font = Enum.Font.GothamBold
+CheckKeyButton.Text = "Check Key"
+CheckKeyButton.TextColor3 = Color3.fromRGB(180, 180, 180)
+CheckKeyButton.TextSize = 14
+local CheckKeyUICorner = Instance.new("UICorner", CheckKeyButton)
+CheckKeyUICorner.CornerRadius = UDim.new(0, 5)
+local DiscordButton = Instance.new("TextButton")
+DiscordButton.Parent = Frame
+DiscordButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+DiscordButton.Position = UDim2.new(0.1, 0, 0.865, 0)
+DiscordButton.Size = UDim2.new(0.8, 0, 0, 30)
+DiscordButton.Font = Enum.Font.GothamBold
+DiscordButton.Text = "Join Discord"
+DiscordButton.TextColor3 = Color3.fromRGB(180, 180, 180)
+DiscordButton.TextSize = 14
+local DiscordUICorner = Instance.new("UICorner", DiscordButton)
+DiscordUICorner.CornerRadius = UDim.new(0, 5)
+local CloseButton = Instance.new("TextButton")
+CloseButton.Parent = Frame
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CloseButton.BackgroundTransparency = 1
+CloseButton.Position = UDim2.new(1, -30, 0, 3)
+CloseButton.Size = UDim2.new(0, 25, 0, 25)
+CloseButton.Font = Enum.Font.GothamBold
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.TextSize = 14
+CloseButton.BorderSizePixel = 0
+local CloseButtonUICorner = Instance.new("UICorner", CloseButton)
+CloseButtonUICorner.CornerRadius = UDim.new(0, 5)
+CloseButton.MouseButton1Click:Connect(function()
+    Frame:Destroy()
+end)
+GetKeyButton.MouseButton1Click:Connect(function()
+    setclipboard(KeyReveliX.getLink())
+    ResultLabel.Text = "Key link copied!"
+    ResultLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+end)
+CheckKeyButton.MouseButton1Click:Connect(function()
+    local key = EnterKeyBox.Text
+    if key == "" then
+        ResultLabel.Text = "Please enter a key."
+        ResultLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     else
-      resultLabel.Text = "Invalid Key!"
+        local response = KeyReveliX.validateDefaultKey(key)
+        if response == trueData then
+            ResultLabel.Text = "Valid Key!"
+            ResultLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+            X:SaveKey(key)  
+            task.wait()
+            Frame:Destroy()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+        else
+            local premiumResponse = KeyReveliX.validatePremiumKey(key)
+            if premiumResponse == trueData then
+                ResultLabel.Text = "Valid Premium Key!"
+                ResultLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+                X:SaveKey(key)  
+                task.wait()
+                Frame:Destroy()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+            else
+                ResultLabel.Text = "Invalid Key!"
+                ResultLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+            end
+        end
     end
-  end)
-end
+end)
+DiscordButton.MouseButton1Click:Connect(function()
+    setclipboard("https://discord.gg/GjEhaYynVb")
+    ResultLabel.Text = "Discord link copied!"
+    ResultLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+end)
