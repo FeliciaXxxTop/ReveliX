@@ -1777,7 +1777,7 @@ local script = G2L["39"];
 	
 	
 	local function onButtonClick()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkNetworks/Infinite-Yield/main/latest.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	end
 	
 	
