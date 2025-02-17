@@ -1,7 +1,4 @@
-y
-end
-end
-return G2L["1"], require;makefolder("d_android_script_dir")
+makefolder("d_android_script_dir")
 if _G.is_Revelixandroid_loaded then
     print("Already")
     return
