@@ -65,8 +65,6 @@ local UICorner_17 = Instance.new("UICorner")
 idk.Name = "idk"
 idk.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 idk.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-idk.Active = true
-idk.Draggabel = true
 
 Main.Name = "Main"
 Main.Parent = idk
@@ -77,7 +75,7 @@ Main.BorderSizePixel = 0
 Main.Position = UDim2.new(0.116943404, 0, -0.00218963623, 0)
 Main.Size = UDim2.new(0, 454, 0, 269)
 Main.Active = true
-Main.Draggabel = true
+Main.Draggable = true
 
 UICorner.Parent = Main
 
