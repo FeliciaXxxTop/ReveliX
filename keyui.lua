@@ -88,7 +88,6 @@ end
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = playerGui
-
 local Frame = Instance.new("Frame")
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
