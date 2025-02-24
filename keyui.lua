@@ -9,8 +9,8 @@ end
 local playerGui = Player:FindFirstChild("PlayerGui") or Player:WaitForChild("PlayerGui")
 
 local KeyReveliX = loadstring(game:HttpGet("https://cdn.keyguardian.org/library/v1.0.0.lua"))()
-local trueData = "29fcdcc1b249427f9b83e77ef2b2f07d"
-local falseData = "83cf37e336f041f48ce797002282aaf6"
+local trueData = "5116f40cd9b949b0968d68d25f491973"
+local falseData = "f5ebd3a3d19f42b4935e040f1a378dd3"
 
 KeyReveliX.Set({
     publicToken = "e9bb399dc6684341948293ee886d762f",
