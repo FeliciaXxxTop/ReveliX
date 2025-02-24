@@ -201,10 +201,13 @@ CloseButton.MouseButton1Click:Connect(function()
     Frame:Destroy()
 end)
 GetKeyButton.MouseButton1Click:Connect(function()
-    setclipboard(KeyReveliX.getLink())
-    ResultLabel.Text = "Key link copied!"
-    ResultLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+    local Succ = pcall(function()
+        setclipboard(KeyReveliX.getLink())
+        ResultLabel.Text = "Key link copied!"
+        ResultLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+    end)
 end)
+
 CheckKeyButton.MouseButton1Click:Connect(function()
     local key = EnterKeyBox.Text
     if key == "" then
