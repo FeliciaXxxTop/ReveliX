@@ -13,8 +13,8 @@ local trueData = "5116f40cd9b949b0968d68d25f491973"
 local falseData = "f5ebd3a3d19f42b4935e040f1a378dd3"
 
 KeyReveliX.Set({
-    publicToken = "e9bb399dc6684341948293ee886d762f",
-    privateToken = "cb7160d3719e4d9ba355bdfc0de0f8d1",
+    publicToken = "c57ffe1d77594a46a0514f70c1bbd0f4",
+    privateToken = "dcf6520bda414cc5bf1ff620e3478ca1",
     trueData = trueData,
     falseData = falseData,
 })
