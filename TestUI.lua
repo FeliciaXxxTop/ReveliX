@@ -1,7 +1,4 @@
-if _G.Reveli then
-	return
-end
-_G.Reveli = true
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
 local userId = player.UserId
