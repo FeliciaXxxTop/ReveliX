@@ -1,8 +1,5 @@
 local NotificationLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Zunes-Bypassed/UI/refs/heads/main/Notify.lua"))()
-if _G.Reveli then
-	return
-end
-_G.Reveli = true
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
 local userId = player.UserId
