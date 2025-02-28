@@ -1,6 +1,6 @@
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
-local userId = LocalPlayer.UserId
+local userId = player.UserId
 local Search = Instance.new("ImageButton")
 local Save = Instance.new("ImageButton")
 local Save_2 = Instance.new("Frame")
