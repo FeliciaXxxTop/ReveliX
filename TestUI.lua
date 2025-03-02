@@ -724,29 +724,55 @@ SearchBox.FocusLost:Connect(function(enterPressed)
         Url = "https://scriptblox.com/api/script/search?q=" .. httpservice:UrlEncode(searchedquery) .. "&page=1",
         Method = "GET"
     })
-    local firstData = httpservice:JSONDecode(firstResponse.Body)
-    local totalPages = firstData.result.totalPages
-    if totalPages == 0 then 
+    
+    local success, firstData = pcall(function()
+        return httpservice:JSONDecode(firstResponse.Body)
+    end)
+    
+    if not success or not firstData.result then
         PageInfo.Text = "🔍 Page 0/0"
-        return 
+        return
     end
+    
+    local totalPages = firstData.result.totalPages
+    
+    if totalPages == 0 then
+        PageInfo.Text = "🔍 Page 0/0"
+        return
+    end
+    
     local allScripts = {}
-    local threads = {}
+    local threadsCompleted = 0
+    
     for page = 1, totalPages do
-        table.insert(threads, task.spawn(function()
+        task.spawn(function()
             local response = request({
                 Url = "https://scriptblox.com/api/script/search?q=" .. httpservice:UrlEncode(searchedquery) .. "&page=" .. page,
                 Method = "GET"
             })
-            local decoded = httpservice:JSONDecode(response.Body)
+    
+            local success, decoded = pcall(function()
+                return httpservice:JSONDecode(response.Body)
+            end)
+    
+            if not success or not decoded.result then
+                PageInfo.Text = "🔍 Page 0/0"
+                return
+            end
+    
             for _, script in pairs(decoded.result.scripts) do
                 table.insert(allScripts, script)
             end
-        end))
+    
+            threadsCompleted = threadsCompleted + 1
+        end)
     end
-    for _, thread in ipairs(threads) do
+    
+    repeat
         task.wait()
-    end
+    until threadsCompleted == totalPages
+
+-- Tiếp tục xử lý allScripts...
     local function formatTime(isoTime)
         local pattern = "(%d+)-(%d+)-(%d+)T(%d+):(%d+):(%d+)"
         local year, month, day, hour, min, sec = isoTime:match(pattern)
@@ -994,7 +1020,7 @@ TextLabel_2.BackgroundTransparency = 1
 TextLabel_2.Position = UDim2.new(0.008, 0, 0.97, 0) 
 TextLabel_2.Size = UDim2.new(0, 100, 0, 20)
 TextLabel_2.Font = Enum.Font.SourceSansBold
-TextLabel_2.Text = "Version: 2.661.713"
+TextLabel_2.Text = "Version: 2.662.537"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 14
 local UICorner_TextLabel2 = Instance.new("UICorner")
@@ -1366,7 +1392,7 @@ function X:GetSavedFile()
         return ""
     end
 end
-ListCode = {
+Highlight = {
     ["and"]            = "rgb(250, 215, 0)",
     ["break"]          = "rgb(250, 215, 0)",
     ["do"]             = "rgb(250, 215, 0)",
@@ -1467,7 +1493,7 @@ ListCode = {
     ["HttpGet"] = "rgb(255, 165, 0)"  
 }
 local function SetSyntax(str)
-    if not ListCode then
+    if not Highlight then
         return str
     end
     local stringColor = "rgb(255, 140, 0)"  
@@ -1485,7 +1511,7 @@ local function SetSyntax(str)
     str = str:gsub("http[s]?://[%w%p%-_/%.%?=%&]+", function(url)
         return '<font color="' .. urlColor .. '">' .. url .. '</font>'
     end)
-    for keyword, color in pairs(ListCode) do
+    for keyword, color in pairs(Highlight) do
         local pattern = ("%f[%a]" .. keyword .. "%f[%A]")
         str = str:gsub(pattern, '<font color="' .. color .. '">' .. keyword .. '</font>')
     end
