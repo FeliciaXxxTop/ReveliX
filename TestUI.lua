@@ -1,9 +1,14 @@
+local NotificationLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Zunes-Bypassed/UI/refs/heads/main/Notify.lua"))()
+if _G.Reveli then
+	return
+end
+_G.Reveli = true
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
 local userId = player.UserId
 local Search = Instance.new("ImageButton")
-local Save = Instance.new("ImageButton")
-local Save_2 = Instance.new("Frame")
+local Forward = Instance.new("ImageButton")
+local Forward_2 = Instance.new("Frame")
 local Search_2 = Instance.new("Frame")
 local content = Players:GetUserThumbnailAsync(userId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 local Name = player.DisplayName
@@ -42,7 +47,6 @@ local TextLabel_6 = Instance.new("TextLabel")
 local TextLabel_7 = Instance.new("TextLabel")
 local Console_2 = Instance.new("Frame")
 local UICorner_7 = Instance.new("UICorner")
-local UICorner_Save = Instance.new("UICorner")
 local TextLabel_8 = Instance.new("TextLabel")
 local Executor_2 = Instance.new("Frame")
 local UICorner_8 = Instance.new("UICorner")
@@ -52,7 +56,7 @@ local UICorner_9 = Instance.new("UICorner")
 local Execute = Instance.new("TextButton")
 local UICorner_10 = Instance.new("UICorner")
 local UICorner_11 = Instance.new("UICorner")
-local Copy = Instance.new("TextButton")
+local Paste = Instance.new("TextButton")
 local UICorner_12 = Instance.new("UICorner")
 local AI_2 = Instance.new("Frame")
 local UICorner_13 = Instance.new("UICorner")
@@ -101,17 +105,17 @@ home.Parent = Side
 home.BackgroundTransparency = 1
 home.Size = UDim2.new(0, 30, 0, 30)
 home.Position = UDim2.new(-0.1, 0, 0, 0) 
-home.Image = "rbxassetid://10747373176"
+home.Image = "rbxassetid://139464910792916"
 Executor = home:Clone()
 Executor.Name = "Executor"
 Executor.Parent = Side
 Executor.Position = UDim2.new(-0.1, 0, 0.12, 0)
-Executor.Image = "rbxassetid://10734982144"
+Executor.Image = "rbxassetid://78025028516956"
 Console = home:Clone()
 Console.Name = "Console"
 Console.Parent = Side
 Console.Position = UDim2.new(-0.1, 0, 0.24, 0)
-Console.Image = "rbxassetid://10723395215"
+Console.Image = "http://www.roblox.com/asset/?id=140658747982482"
 Settings_2.Name = "Settings"
 Settings_2.Parent = Main
 Settings_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -155,14 +159,14 @@ Console_2.Visible = false
 local UICorner_18 = Instance.new("UICorner")
 UICorner_18.Parent = Console_2
 UICorner_18.CornerRadius = UDim.new(0, 10)
-Save_2.Name = "Save"
-Save_2.Parent = Main
-Save_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Save_2.BackgroundTransparency = 0
-Save_2.BorderSizePixel = 0
-Save_2.Position = UDim2.new(0.071, 0, 0.122, 0)
-Save_2.Size = UDim2.new(0, 457, 0, 259.6)
-Save_2.Visible = false
+Forward_2.Name = "Forward"
+Forward_2.Parent = Main
+Forward_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Forward_2.BackgroundTransparency = 0
+Forward_2.BorderSizePixel = 0
+Forward_2.Position = UDim2.new(0.071, 0, 0.122, 0)
+Forward_2.Size = UDim2.new(0, 457, 0, 259.6)
+Forward_2.Visible = false
 Search_2.Name = "Search" 
 Search_2.Parent = Main 
 Search_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
@@ -197,6 +201,11 @@ JumpPowerBox.TextSize = 16
 local UICorner_Jump = Instance.new("UICorner")
 UICorner_Jump.CornerRadius = UDim.new(0, 10)
 UICorner_Jump.Parent = JumpPowerBox
+local Line = Instance.new("Frame")
+Line.Parent = Settings_2
+Line.Size = UDim2.new(0, 2, 1, 0)
+Line.Position = UDim2.new(0.5, -1, 0, 0)
+Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 local FPSButton = Instance.new("TextButton")
 FPSButton.Parent = Settings_2
 FPSButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -442,7 +451,7 @@ Settings.BackgroundTransparency = 1.000
 Settings.BorderSizePixel = 0
 Settings.Position = UDim2.new(-0.1, 0, 0.50, 0)  
 Settings.Size = UDim2.new(0, 28, 0, 28)
-Settings.Image = "rbxassetid://10734950309"
+Settings.Image = "http://www.roblox.com/asset/?id=97917672712867"
 Top.Name = "Top"
 Top.Parent = Main
 Top.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
@@ -455,7 +464,7 @@ UICorner_3.Parent = Top
 local TextLabel = Instance.new("TextLabel")
 TextLabel.Parent = Top
 TextLabel.BackgroundTransparency = 1
-TextLabel.Position = UDim2.new(-0.01, 0, 0, 0)
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
 TextLabel.Size = UDim2.new(0, 228, 0, 35)
 TextLabel.Font = Enum.Font.SourceSansBold
 TextLabel.Text = "ReveliX | Android"
@@ -480,180 +489,34 @@ local sideTween = TweenService:Create(Side, tweenInfo, {Position = sideGoalPosit
 mainTween:Play()
 task.wait(0.2) 
 sideTween:Play()
-Save.Name = "Save"
-Save.Parent = Side
-Save.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Save.BackgroundTransparency = 1.000
-Save.BorderSizePixel = 0
-Save.Position = UDim2.new(-0.1, 0, 0.36, 0) 
-Save.Size = UDim2.new(0, 28, 0, 28)
-Save.Image = "rbxassetid://10723374641"
-Save_2.Name = "Save"
-Save_2.Parent = Main
-Save_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Save_2.BackgroundTransparency = 0
-Save_2.BorderSizePixel = 0
-Save_2.Position = UDim2.new(0.071, 0, 0.122, 0)
-Save_2.Size = UDim2.new(0, 457, 0, 259.6)
-Save_2.Visible = false
-UICorner_Save.Parent = Save_2
-local FileNameBox = Instance.new("TextBox")
-FileNameBox.Parent = Save_2
-FileNameBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-FileNameBox.BackgroundTransparency = 1
-FileNameBox.BorderSizePixel = 0
-FileNameBox.Size = UDim2.new(0.3, 0, 0, 35)  
-FileNameBox.Position = UDim2.new(-0, 0, 0, 0)
-FileNameBox.Font = Enum.Font.SourceSansBold
-FileNameBox.PlaceholderText = "Enter Name File"
-FileNameBox.TextXAlignment = Enum.TextXAlignment.Left
-FileNameBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-FileNameBox.TextSize = 18
-FileNameBox.Text = "" 
-FileNameBox.ClearTextOnFocus = true
-FileNameBox.TextWrapped = true
-local TextBox_1 = Instance.new("TextBox")
-TextBox_1.Parent = Save_2
-TextBox_1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextBox_1.BackgroundTransparency = 1
-TextBox_1.BorderSizePixel = 0
-TextBox_1.Position = UDim2.new(0.35, 0, TextBox_1.Position.Y.Scale - 0.04, 10)
-TextBox_1.Size = UDim2.new(0.4, 0, 0, 35)
-TextBox_1.Font = Enum.Font.SourceSansBold
-TextBox_1.PlaceholderText = "Enter Content"
-TextBox_1.TextXAlignment = Enum.TextXAlignment.Left
-TextBox_1.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextBox_1.TextSize = 18
-TextBox_1.Text = "" 
-TextBox_1.ClearTextOnFocus = true
-TextBox_1.TextWrapped = true
-local FileNameCorner = Instance.new("UICorner")
-FileNameCorner.CornerRadius = UDim.new(0, 10)
-FileNameCorner.Parent = FileNameBox
-local TextBoxCorner = Instance.new("UICorner")
-TextBoxCorner.CornerRadius = UDim.new(0, 10)
-TextBoxCorner.Parent = TextBox_1
-local SaveButton = Instance.new("ImageButton")
-SaveButton.Parent = Save_2
-SaveButton.BackgroundTransparency = 1
-SaveButton.Position = UDim2.new(0.78, 10, -0.02, 10)
-SaveButton.Size = UDim2.new(0, 25, 0, 25)
-SaveButton.Image = "rbxassetid://10734941499"
-local FileListFrame = Instance.new("ScrollingFrame")
-FileListFrame.Parent = Save_2
-FileListFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-FileListFrame.BackgroundTransparency = 1
-FileListFrame.BorderSizePixel = 0
-FileListFrame.Position = UDim2.new(-0.022, 10, -0.023, 60)
-FileListFrame.Size = UDim2.new(1, 0, 0.77, 0)
-FileListFrame.ClipsDescendants = true
-FileListFrame.ScrollBarThickness = 0 
-FileListFrame.CanvasSize = UDim2.new(0, 0, 0, 0) 
-local FileListCorner = Instance.new("UICorner")
-FileListCorner.CornerRadius = UDim.new(0, 10)
-FileListCorner.Parent = FileListFrame
-local X = {}
-X.Folder = "RX"
-function X:BuildFolderTree()
-    if not isfolder(self.Folder) then
-        makefolder(self.Folder)
-    end
-end
-X:BuildFolderTree()
-function X:SaveFile(fileName, content)
-    local filePath = X.Folder .. "/" .. fileName .. ".lua"
-    writefile(filePath, content)
-end
-local SavedFiles = {}
-local function UpdateFileList()
-    for _, child in pairs(FileListFrame:GetChildren()) do
-        if child:IsA("Frame") then
-            child:Destroy()
-        end
-    end
-    local yOffset = 5
-    for i, fileName in ipairs(SavedFiles) do
-        local FileItem = Instance.new("Frame")
-        FileItem.Parent = FileListFrame
-        FileItem.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-        FileItem.BackgroundTransparency = 1
-        FileItem.Size = UDim2.new(1, -10, 0, 30)
-        FileItem.Position = UDim2.new(0, 5, 0, yOffset)
-        local FileItemCorner = Instance.new("UICorner")
-        FileItemCorner.CornerRadius = UDim.new(0, 10)
-        FileItemCorner.Parent = FileItem
-        local FileNameLabel = Instance.new("TextLabel")
-        FileNameLabel.Parent = FileItem
-        FileNameLabel.Text = fileName
-        FileNameLabel.Font = Enum.Font.SourceSansBold
-        FileNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        FileNameLabel.Size = UDim2.new(0.6, 0, 1, 0)
-        FileNameLabel.TextSize = 15
-        FileNameLabel.BackgroundTransparency = 1
-        FileNameLabel.TextXAlignment = Enum.TextXAlignment.Left
-        FileNameLabel.Position = UDim2.new(0.05, 0, 0, 0)
-        local ExecuteButton = Instance.new("ImageButton")
-        ExecuteButton.Parent = FileItem
-        ExecuteButton.Size = UDim2.new(0, 20, 0, 20)
-        ExecuteButton.Position = UDim2.new(0.7, 0, 0.3, 0)
-        ExecuteButton.BackgroundTransparency = 1
-        ExecuteButton.Image = "rbxassetid://10734943902"
-        local ClearButton = Instance.new("ImageButton")
-        ClearButton.Parent = FileItem
-        ClearButton.Size = UDim2.new(0, 20, 0, 20)
-        ClearButton.Position = UDim2.new(0.85, 0, 0.3, 0)
-        ClearButton.BackgroundTransparency = 1
-        ClearButton.Image = "rbxassetid://10747383819"
-        ExecuteButton.MouseButton1Click:Connect(function()
-            local filePath = X.Folder .. "/" .. fileName .. ".lua"
-            if isfile(filePath) then
-                local scriptContent = readfile(filePath)
-                loadstring(scriptContent)()
-            end
-        end)
-        ClearButton.MouseButton1Click:Connect(function()
-            delfile(X.Folder .. "/" .. fileName .. ".lua")
-            for index, savedFile in ipairs(SavedFiles) do
-                if savedFile == fileName then
-                    table.remove(SavedFiles, index)
-                    break
-                end
-            end
-            UpdateFileList()
-        end)
-        yOffset = yOffset + 35
-    end
-    FileListFrame.CanvasSize = UDim2.new(0, 0, 0, yOffset)
-end
-local function LoadSavedFiles()
-    local files = listfiles(X.Folder)
-    for _, filePath in ipairs(files) do
-        local fileName = filePath:match("([^/]+)%.lua$")
-        if fileName and not table.find(SavedFiles, fileName) then
-            table.insert(SavedFiles, fileName)
-        end
-    end
-    UpdateFileList()
-end
-LoadSavedFiles()
-SaveButton.MouseButton1Click:Connect(function()
-    local fileName, content = FileNameBox.Text, TextBox_1.Text
-    if fileName ~= "" and content ~= "" then
-        local filePath = X.Folder .. "/" .. fileName .. ".lua"
-        if isfile(filePath) then
-            local existingContent = readfile(filePath)
-            if existingContent ~= content then
-                writefile(filePath, content)
-            end
-        else
-            X:SaveFile(fileName, content)
-            table.insert(SavedFiles, fileName)
-        end
-        UpdateFileList()
-        TextBox_1.Text = ""
-        FileNameBox.Text = ""
-    end
-end)
+Forward.Name = "Forward"
+Forward.Parent = Side
+Forward.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Forward.BackgroundTransparency = 1.000
+Forward.BorderSizePixel = 0
+Forward.Position = UDim2.new(-0.1, 0, 0.36, 0) 
+Forward.Size = UDim2.new(0, 28, 0, 28)
+Forward.Image = "http://www.roblox.com/asset/?id=82276736078331"
+Forward_2.Name = "Forward"
+Forward_2.Parent = Main
+Forward_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Forward_2.BackgroundTransparency = 0
+Forward_2.BorderSizePixel = 0
+Forward_2.Position = UDim2.new(0.071, 0, 0.122, 0)
+Forward_2.Size = UDim2.new(0, 457, 0, 259.6)
+Forward_2.Visible = false
+UICorner_7.Parent = Forward_2
+TextLabel_8.Parent = Forward_2
+TextLabel_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_8.BackgroundTransparency = 1.000
+TextLabel_8.BorderSizePixel = 0
+TextLabel_8.Position = UDim2.new(0.0640756339, 0, 0.3434937, 0)
+TextLabel_8.Size = UDim2.new(0, 377, 0, 62)
+TextLabel_8.Font = Enum.Font.SourceSansBold
+TextLabel_8.Text = "Other coming soon!"
+TextLabel_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_8.TextSize = 32.000
+TextLabel_8.TextWrapped = true
 Search.Name = "Search"
 Search.Parent = Side
 Search.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -661,7 +524,7 @@ Search.BackgroundTransparency = 1.000
 Search.BorderSizePixel = 0
 Search.Position = UDim2.new(-0.1, 0, 0.62, 0) 
 Search.Size = UDim2.new(0, 28, 0, 28)
-Search.Image = "rbxassetid://10723387563"
+Search.Image = "http://www.roblox.com/asset/?id=100225435871664"
 local function createUICorner(parent, radius)
 	local corner = Instance.new("UICorner")
 	corner.CornerRadius = UDim.new(0, radius)
@@ -680,7 +543,7 @@ SearchBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 SearchBox.BorderSizePixel = 0 
 SearchBox.TextXAlignment = Enum.TextXAlignment.Left 
 SearchBox.Text = "" 
-createUICorner(SearchBox, 10)
+createUICorner(SearchBox, 8)
 local SearchResults = Instance.new("ScrollingFrame") 
 SearchResults.Parent = Search_2 
 SearchResults.Size = UDim2.new(1, 0, 1, -45) 
@@ -696,532 +559,165 @@ UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 local PageInfo = Instance.new("TextLabel")
 PageInfo.Parent = Search_2
 PageInfo.Size = UDim2.new(0, 200, 0, 20) 
-PageInfo.Position = UDim2.new(1, -205, 0.03, 0) 
+PageInfo.Position = UDim2.new(1, -205, 0, 10) 
 PageInfo.TextSize = 14
 PageInfo.Font = Enum.Font.SourceSansBold
 PageInfo.TextColor3 = Color3.fromRGB(255, 255, 255)
 PageInfo.BackgroundTransparency = 1
-PageInfo.Text = "🔍 Page 0/0"
+PageInfo.Text = "Total Pages: 0 | Page: 0"
 PageInfo.TextXAlignment = Enum.TextXAlignment.Right
-local currentSearchQuery = ""
 SearchBox.FocusLost:Connect(function(enterPressed)
     if not enterPressed or SearchBox.Text == "" then return end
     local httpservice = game:GetService("HttpService")
     local searchedquery = SearchBox.Text
-    currentSearchQuery = searchedquery
-    PageInfo.Text = "🔍 Searching..."
+    local page = 1
+    local yOffset = 0
     for _, v in pairs(SearchResults:GetChildren()) do
-        if v:IsA("Frame") then 
-            v:Destroy() 
+        if v:IsA("Frame") then
+            v:Destroy()
         end
     end
+    if not SearchResults:IsA("ScrollingFrame") then return end
     SearchResults.CanvasSize = UDim2.new(0, 0, 0, 0)
-    local firstResponse = request({
-        Url = "https://scriptblox.com/api/script/search?q=" .. httpservice:UrlEncode(searchedquery) .. "&page=1",
+    local response = request({
+        Url = "https://scriptblox.com/api/script/search?q=" .. httpservice:UrlEncode(searchedquery),
         Method = "GET"
     })
-    local firstData = httpservice:JSONDecode(firstResponse.Body)
-    local totalPages = firstData.result.totalPages
-    if totalPages == 0 then 
-        PageInfo.Text = "🔍 Page 0/0"
-        return 
-    end
-    local allScripts = {}
-    local threads = {}
-    for page = 1, totalPages do
-        table.insert(threads, task.spawn(function()
-            local response = request({
-                Url = "https://scriptblox.com/api/script/search?q=" .. httpservice:UrlEncode(searchedquery) .. "&page=" .. page,
-                Method = "GET"
-            })
-            local decoded = httpservice:JSONDecode(response.Body)
-            for _, script in pairs(decoded.result.scripts) do
-                table.insert(allScripts, script)
+    local decoded = httpservice:JSONDecode(response.Body)
+    local totalPages = decoded.result.totalPages or 1
+    PageInfo.Text = "🔍 Total Pages: " .. totalPages .. " | Page: " .. page
+    while page <= totalPages do
+        local response = request({
+            Url = "https://scriptblox.com/api/script/search?q=" .. httpservice:UrlEncode(searchedquery),
+            Method = "GET"
+        })
+        local decoded = httpservice:JSONDecode(response.Body)
+        local scripts = decoded.result.scripts
+        if #scripts == 0 then break end
+        for _, script in pairs(scripts) do
+            local function formatTime(isoTime)
+                local pattern = "(%d+)-(%d+)-(%d+)T(%d+):(%d+):(%d+)"
+                local year, month, day, hour, min, sec = isoTime:match(pattern)
+                return string.format("%02d/%02d/%04d %02d:%02d", day, month, year, hour, min)
             end
-        end))
-    end
-    for _, thread in ipairs(threads) do
-        task.wait()
-    end
-    local function formatTime(isoTime)
-        local pattern = "(%d+)-(%d+)-(%d+)T(%d+):(%d+):(%d+)"
-        local year, month, day, hour, min, sec = isoTime:match(pattern)
-        return string.format("%02d/%02d/%04d %02d:%02d", day, month, year, hour, min)
-    end
-    local yOffset = 0
-    for _, script in pairs(allScripts) do
-        local createdAt = formatTime(script.createdAt)
+            local createdAt = formatTime(script.createdAt)
             local updatedAt = formatTime(script.updatedAt)
             local ScriptBox = Instance.new("Frame")
             ScriptBox.Parent = SearchResults
-            ScriptBox.Size = UDim2.new(1, -10, 0, 120)
+            ScriptBox.Size = UDim2.new(1, -10, 0, 90)
             ScriptBox.Position = UDim2.new(0, 5, 0, yOffset)
-            ScriptBox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+            ScriptBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30) 
             ScriptBox.BorderSizePixel = 0
             createUICorner(ScriptBox, 10)
+            ScriptBox.MouseEnter:Connect(function()
+                ScriptBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            end)
+            ScriptBox.MouseLeave:Connect(function()
+                ScriptBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            end)
             local BackgroundImage = Instance.new("ImageLabel")
             BackgroundImage.Parent = ScriptBox
-            BackgroundImage.Size = UDim2.new(0, 220, 0, 120)
-            BackgroundImage.Position = UDim2.new(0, 0, 0, 0)
+            BackgroundImage.Size = UDim2.new(0, 70, 0, 70)
+            BackgroundImage.Position = UDim2.new(0, 10, 0, 10)
             BackgroundImage.Image = "https://assetgame.roblox.com/Game/Tools/ThumbnailAsset.ashx?aid=" .. script.game.gameId .. "&fmt=png&wd=420&ht=420"
             BackgroundImage.BackgroundTransparency = 1
             BackgroundImage.ScaleType = Enum.ScaleType.Crop
-            createUICorner(BackgroundImage, 10)
+            createUICorner(BackgroundImage, 8)
             local ScriptName = Instance.new("TextLabel")
             ScriptName.Parent = ScriptBox
-            ScriptName.Size = UDim2.new(1, -150, 0, 20)  
-            ScriptName.Position = UDim2.new(0, 222, 0, 0)
+            ScriptName.Size = UDim2.new(1, -180, 0, 30)
+            ScriptName.Position = UDim2.new(0, 90, 0, 10)
             ScriptName.Text = script.title
             ScriptName.TextSize = 16
-            ScriptName.Font = Enum.Font.SourceSansBold
+            ScriptName.Font = Enum.Font.GothamBold
             ScriptName.TextColor3 = Color3.fromRGB(255, 255, 255)
             ScriptName.BackgroundTransparency = 1
             ScriptName.TextXAlignment = Enum.TextXAlignment.Left
-            ScriptName.TextTruncate = Enum.TextTruncate.AtEnd  
-            ScriptName.TextWrap = true  
-            ScriptBox.ClipsDescendants = true  
-            local GameNameLabel = Instance.new("TextLabel")
-            GameNameLabel.Parent = ScriptBox
-            GameNameLabel.Size = UDim2.new(1, -150, 0, 15)
-            GameNameLabel.Position = UDim2.new(0, 222, 0, 18)
-            GameNameLabel.Text = "🎮 Game: " .. script.game.name
-            GameNameLabel.TextSize = 13
-            GameNameLabel.Font = Enum.Font.SourceSansBold
-            GameNameLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-            GameNameLabel.BackgroundTransparency = 1
-            GameNameLabel.TextXAlignment = Enum.TextXAlignment.Left
-            local CreatedLabel = Instance.new("TextLabel")
-            CreatedLabel.Parent = ScriptBox
-            CreatedLabel.Size = UDim2.new(1, -150, 0, 15)
-            CreatedLabel.Position = UDim2.new(0, 222, 0, 36)
-            CreatedLabel.Text = "🕒 Created: " .. createdAt
-            CreatedLabel.TextSize = 13
-            CreatedLabel.Font = Enum.Font.SourceSansBold
-            CreatedLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-            CreatedLabel.BackgroundTransparency = 1
-            CreatedLabel.TextXAlignment = Enum.TextXAlignment.Left
-            local UpdatedLabel = Instance.new("TextLabel")
-            UpdatedLabel.Parent = ScriptBox
-            UpdatedLabel.Size = UDim2.new(1, -150, 0, 15)
-            UpdatedLabel.Position = UDim2.new(0, 222, 0, 54)
-            UpdatedLabel.Text = "🔄 Updated: " .. updatedAt
-            UpdatedLabel.TextSize = 13
-            UpdatedLabel.Font = Enum.Font.SourceSansBold
-            UpdatedLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-            UpdatedLabel.BackgroundTransparency = 1
-            UpdatedLabel.TextXAlignment = Enum.TextXAlignment.Left
-            local ViewsLabel = Instance.new("TextLabel")
-            ViewsLabel.Parent = ScriptBox
-            ViewsLabel.Size = UDim2.new(1, -150, 0, 15)
-            ViewsLabel.Position = UDim2.new(0, 222, 0, 72)
-            ViewsLabel.Text = "👀 Views: " .. script.views
-            ViewsLabel.TextSize = 13
-            ViewsLabel.Font = Enum.Font.SourceSansBold
-            ViewsLabel.TextColor3 = Color3.fromRGB(0, 200, 255)
-            ViewsLabel.BackgroundTransparency = 1
-            ViewsLabel.TextXAlignment = Enum.TextXAlignment.Left
-            local extraYOffset = 15 
-            if script.key == true then
-                local KeyLabel = Instance.new("TextLabel")
-                KeyLabel.Parent = ScriptBox
-                KeyLabel.Size = UDim2.new(1, -150, 0, 15)
-                KeyLabel.Position = UDim2.new(0, 222, 0, 89)
-                KeyLabel.Text = "🔑 Key Required"
-                KeyLabel.TextSize = 13
-                KeyLabel.Font = Enum.Font.SourceSansBold
-                KeyLabel.TextColor3 = Color3.fromRGB(255, 200, 0)
-                KeyLabel.BackgroundTransparency = 1
-                KeyLabel.TextXAlignment = Enum.TextXAlignment.Left
-                extraYOffset = extraYOffset + 15
-            end
-            if script.verified == true then
-                local VerifiedLabel = Instance.new("TextLabel")
-                VerifiedLabel.Parent = ScriptBox
-                VerifiedLabel.Size = UDim2.new(1, -150, 0, 15)
-                VerifiedLabel.Position = UDim2.new(0, 222, 0, 105)
-                VerifiedLabel.Text = "✅ Verified"
-                VerifiedLabel.TextSize = 13
-                VerifiedLabel.Font = Enum.Font.SourceSansBold
-                VerifiedLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-                VerifiedLabel.BackgroundTransparency = 1
-                VerifiedLabel.TextXAlignment = Enum.TextXAlignment.Left
-                extraYOffset = extraYOffset + 15
-            end
+            ScriptName.TextTruncate = Enum.TextTruncate.AtEnd
+            local CreatedAtLabel = Instance.new("TextLabel")
+            CreatedAtLabel.Parent = ScriptBox
+            CreatedAtLabel.Size = UDim2.new(1, -180, 0, 20)
+            CreatedAtLabel.Position = UDim2.new(0, 90, 0, 40)
+            CreatedAtLabel.Text = "🕒 Created: " .. createdAt
+            CreatedAtLabel.TextSize = 14
+            CreatedAtLabel.Font = Enum.Font.Gotham
+            CreatedAtLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+            CreatedAtLabel.BackgroundTransparency = 1
+            CreatedAtLabel.TextXAlignment = Enum.TextXAlignment.Left
+            local UpdatedAtLabel = Instance.new("TextLabel")
+            UpdatedAtLabel.Parent = ScriptBox
+            UpdatedAtLabel.Size = UDim2.new(1, -180, 0, 20)
+            UpdatedAtLabel.Position = UDim2.new(0, 90, 0, 60)
+            UpdatedAtLabel.Text = "🔄 Updated: " .. updatedAt
+            UpdatedAtLabel.TextSize = 14
+            UpdatedAtLabel.Font = Enum.Font.Gotham
+            UpdatedAtLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+            UpdatedAtLabel.BackgroundTransparency = 1
+            UpdatedAtLabel.TextXAlignment = Enum.TextXAlignment.Left
             local CopyButton = Instance.new("ImageButton")
             CopyButton.Parent = ScriptBox
-            CopyButton.Size = UDim2.new(0, 20, 0, 20)
-            CopyButton.Position = UDim2.new(1.03, -70, 0.95, -15)
-            CopyButton.Image = "rbxassetid://10709799288"
+            CopyButton.Size = UDim2.new(0, 35, 0, 35)
+            CopyButton.Position = UDim2.new(1, -80, 0.5, -17)
+            CopyButton.Image = "rbxassetid://72822546519104"
             CopyButton.BackgroundTransparency = 1
             CopyButton.ScaleType = Enum.ScaleType.Fit
             CopyButton.MouseButton1Click:Connect(function()
                 setclipboard(script.script)
             end)
+            createUICorner(CopyButton, 8)
             local ExecuteButton = Instance.new("ImageButton")
             ExecuteButton.Parent = ScriptBox
-            ExecuteButton.Size = UDim2.new(0, 20, 0, 20)
-            ExecuteButton.Position = UDim2.new(1.03, -35, 0.95, -15)
-            ExecuteButton.Image = "rbxassetid://10734943902"
+            ExecuteButton.Size = UDim2.new(0, 35, 0, 35)
+            ExecuteButton.Position = UDim2.new(1, -40, 0.5, -17)
+            ExecuteButton.Image = "rbxassetid://125594054578785"
             ExecuteButton.BackgroundTransparency = 1
             ExecuteButton.ScaleType = Enum.ScaleType.Fit
             ExecuteButton.MouseButton1Click:Connect(function()
                 loadstring(script.script)()
             end)
-            if script.keyLink and script.keyLink ~= "" then
-                local GetKeyButton = Instance.new("ImageButton")
-                GetKeyButton.Parent = ScriptBox
-                GetKeyButton.Size = UDim2.new(0, 20, 0, 20)
-                GetKeyButton.Position = UDim2.new(1.03, -105, 0.95, -15) 
-                GetKeyButton.Image = "rbxassetid://10723416652"
-                GetKeyButton.BackgroundTransparency = 1
-                GetKeyButton.ScaleType = Enum.ScaleType.Fit
-                GetKeyButton.MouseButton1Click:Connect(function()
-                    setclipboard(script.keyLink) 
-                end)
-            end
-        yOffset = yOffset + 130
+            createUICorner(ExecuteButton, 8)
+            yOffset = yOffset + 100
+        end
+        SearchResults.CanvasSize = UDim2.new(0, 0, 0, yOffset)
+        PageInfo.Text = "🔍 Total Pages: " .. totalPages .. " | Page: " .. page
+        page = page + 1
     end
-    SearchResults.CanvasSize = UDim2.new(0, 0, 0, yOffset)
-    PageInfo.Text = "🔍 Page " .. totalPages .. "/" .. totalPages
 end)
+local User = Instance.new("ImageLabel")
 User.Name = "User"
 User.Parent = Home 
-User.BackgroundTransparency = 1
+User.BackgroundTransparency = 1.0
 User.Position = UDim2.new(0.008, 0, -0.006, 0)
 User.Size = UDim2.new(0, 47, 0, 59)
 User.ZIndex = 2
 User.Image = content
+local UserText = Instance.new("TextLabel")
 UserText.Name = "UserText"
 UserText.Parent = User
 UserText.BackgroundTransparency = 1.0
 UserText.Position = UDim2.new(1.116, 0, 0.113, 0)
-UserText.Size = UDim2.new(0, 250, 0, 35) 
+UserText.Size = UDim2.new(0, 155, 0, 35)
 UserText.ZIndex = 2
 UserText.Font = Enum.Font.SourceSansBold
 local displayName = Name
-if #Name > 5 then
-    displayName = string.sub(Name, 1, 5) .. "***"
+if #Name > 3 then
+    displayName = string.sub(Name, 1, 3) .. "***"
 end
-UserText.Text = "Welcome " .. displayName .. " Thank For Using ReveliX!"
+UserText.Text = "Welcome " .. displayName .. "\nThanks for using ReveliX!"  
 UserText.TextColor3 = Color3.fromRGB(255, 255, 255)
-UserText.TextSize = 15
+UserText.TextSize = 10 
+UserText.TextWrapped = true  
 UserText.TextXAlignment = Enum.TextXAlignment.Left
-local Frame = Instance.new("Frame")
-Frame.Parent = user
-Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BackgroundTransparency = 1
-Frame.Position = UDim2.new(0.014, 0, 0.05, 0)
-Frame.Size = UDim2.new(0, 67, 0, 67)
-local UICorner_6 = Instance.new("UICorner")
-UICorner_6.CornerRadius = UDim.new(1, 0)
-UICorner_6.Parent = Frame
-Frame1.Name = "Frame1"
-Frame1.Parent = Home
-Frame1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame1.BackgroundTransparency = 1
-Frame1.BorderSizePixel = 0
-Frame1.Position = UDim2.new(-0.0002, 0, 0.313, 0)
-Frame1.Size = UDim2.new(0, 220, 0, 162)
-Frame1.ZIndex = 2
-local UICornerFrame1 = Instance.new("UICorner")
-UICornerFrame1.CornerRadius = UDim.new(0, 10) 
-UICornerFrame1.Parent = Frame1
-local AboutUsFrame = Instance.new("Frame")
-AboutUsFrame.Name = "AboutUs"
-AboutUsFrame.Parent = Home
-AboutUsFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-AboutUsFrame.BackgroundTransparency = 1 
-AboutUsFrame.Position = UDim2.new(0.62, 0, 0.3, 0) 
-AboutUsFrame.Size = UDim2.new(0, 170, 0, 130)
-AboutUsFrame.ZIndex = 2
-local UICornerAboutUs = Instance.new("UICorner")
-UICornerAboutUs.CornerRadius = UDim.new(0, 10)
-UICornerAboutUs.Parent = AboutUsFrame
-local AboutTitle = Instance.new("TextLabel")
-AboutTitle.Parent = AboutUsFrame
-AboutTitle.BackgroundTransparency = 1 
-AboutTitle.Size = UDim2.new(1, 0, 0, 25)
-AboutTitle.Position = UDim2.new(0, 0, 0, 5)
-AboutTitle.Font = Enum.Font.SourceSansBold
-AboutTitle.Text = "About Us"
-AboutTitle.TextColor3 = Color3.fromRGB(255, 255, 255) 
-AboutTitle.TextStrokeTransparency = 0.1 
-AboutTitle.TextSize = 16
-AboutTitle.TextXAlignment = Enum.TextXAlignment.Right
-local function createInfoBox(parent, name, description, positionY)
-    local InfoFrame = Instance.new("Frame")
-    InfoFrame.Parent = parent
-    InfoFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-    InfoFrame.BackgroundTransparency = 1 
-    InfoFrame.Position = UDim2.new(0.05, 0, positionY, 0)
-    InfoFrame.Size = UDim2.new(0.9, 0, 0, 30)
-    local UICornerInfo = Instance.new("UICorner")
-    UICornerInfo.CornerRadius = UDim.new(0, 10)
-    UICornerInfo.Parent = InfoFrame
-    local NameLabel = Instance.new("TextLabel")
-    NameLabel.Parent = InfoFrame
-    NameLabel.BackgroundTransparency = 1 
-    NameLabel.Position = UDim2.new(0.05, 0, 0, 0)
-    NameLabel.Size = UDim2.new(0.4, 0, 1, 0)
-    NameLabel.Font = Enum.Font.SourceSansBold
-    NameLabel.Text = name
-    NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255) 
-    NameLabel.TextStrokeTransparency = 0.1 
-    NameLabel.TextSize = 14
-    NameLabel.TextXAlignment = Enum.TextXAlignment.Left
-    local DescLabel = Instance.new("TextLabel")
-    DescLabel.Parent = InfoFrame
-    DescLabel.BackgroundTransparency = 1 
-    DescLabel.Position = UDim2.new(0.5, 0, 0, 0)
-    DescLabel.Size = UDim2.new(0.5, 0, 1, 0)
-    DescLabel.Font = Enum.Font.SourceSans
-    DescLabel.Text = description
-    DescLabel.TextColor3 = Color3.fromRGB(255, 255, 255) 
-    DescLabel.TextStrokeTransparency = 0.1 
-    DescLabel.TextSize = 14
-    DescLabel.TextXAlignment = Enum.TextXAlignment.Right
-end
-createInfoBox(AboutUsFrame, "rvx", "Owner", 0.25)
-createInfoBox(AboutUsFrame, "nath", "Android Developer", 0.5)
-createInfoBox(AboutUsFrame, "Clock", "UI Developer", 0.75)
-local TextLabel_2 = Instance.new("TextLabel")
-TextLabel_2.Parent = Frame1
-TextLabel_2.BackgroundTransparency = 1
-TextLabel_2.Position = UDim2.new(0.008, 0, 0.97, 0) 
-TextLabel_2.Size = UDim2.new(0, 100, 0, 20)
-TextLabel_2.Font = Enum.Font.SourceSansBold
-TextLabel_2.Text = "Version: 2.661.713"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextSize = 14
-local UICorner_TextLabel2 = Instance.new("UICorner")
-UICorner_TextLabel2.CornerRadius = UDim.new(0, 10) 
-UICorner_TextLabel2.Parent = TextLabel_2
-local Frame2 = Instance.new("Frame")
-Frame2.Name = "Frame2"
-Frame2.Parent = Home
-Frame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame2.BackgroundTransparency = 1
-Frame2.BorderSizePixel = 0
-Frame2.Position = UDim2.new(0.629, 0, 0.7974, 0) 
-Frame2.Size = UDim2.new(0, 167, 0, 50) 
-Frame2.ZIndex = 2
-local UICornerFrame2 = Instance.new("UICorner")
-UICornerFrame2.CornerRadius = UDim.new(0, 10) 
-UICornerFrame2.Parent = Frame2
-local function createTextLabel(parent, position, size, text, textSize)
-    local label = Instance.new("TextLabel")
-    label.Parent = parent
-    label.BackgroundTransparency = 1.0
-    label.Position = UDim2.new(0, 2, position.Y.Scale, 0) 
-    label.Size = size
-    label.Font = Enum.Font.SourceSansBold
-    label.Text = text
-    label.TextColor3 = Color3.fromRGB(255, 255, 255)
-    label.TextSize = textSize
-    label.TextXAlignment = Enum.TextXAlignment.Left 
-    return label
-end
-local FPSLabel = createTextLabel(Frame2, UDim2.new(0, 2, 0.214, 0), UDim2.new(0, 208, 0, 28), "FPS: ", 15)
-local TimeLabel = createTextLabel(Frame2, UDim2.new(0, 2, 0.60, -28), UDim2.new(0, 208, 0, 28), "TIME: ", 15)
-local RunService = game:GetService("RunService")
-local lastTick = tick()
-local frameCount = 0
-RunService.RenderStepped:Connect(function()
-    frameCount = frameCount + 1
-    local currentTick = tick()
-    if currentTick - lastTick >= 1 then
-        FPSLabel.Text = "FPS: " .. frameCount
-        frameCount = 0
-        lastTick = currentTick
-    end
-end)
-local function UpdateLocalTime()
-    local date = os.date("*t")
-    local hour = date.hour % 24
-    local ampm = hour < 12 and "AM" or "PM"
-    local formattedTime = string.format("%02i:%02i:%02i %s", ((hour - 1) % 12) + 1, date.min, date.sec, ampm)
-    local formattedDate = string.format("%02d/%02d/%04d", date.day, date.month, date.year)
-    local LocalizationService = game:GetService("LocalizationService")
-    local Players = game:GetService("Players")
-    local player = Players.LocalPlayer
-    local regionCode = "Unknown"
-    local success, code = pcall(function()
-        return LocalizationService:GetCountryRegionForPlayerAsync(player)
-    end)
-    if success then
-        regionCode = code
-    end
-    TimeLabel.Text = formattedDate .. " - " .. formattedTime .. " [ " .. regionCode .. " ]"
-end
-spawn(function()
-    while true do
-        UpdateLocalTime()
-        game:GetService("RunService").RenderStepped:Wait()
-    end
-end)
-local DexExplorerButton = Instance.new("TextButton")
-DexExplorerButton.Name = "DexExplorerButton"
-DexExplorerButton.Parent = Frame1
-DexExplorerButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-DexExplorerButton.BackgroundTransparency = 1
-DexExplorerButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-DexExplorerButton.BorderSizePixel = 0
-DexExplorerButton.Position = UDim2.new(0.05, 0, 0.1, 0) 
-DexExplorerButton.Size = UDim2.new(0, 80, 0, 15) 
-DexExplorerButton.Text = "Dex Explorer"
-DexExplorerButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-DexExplorerButton.TextSize = 13 
-DexExplorerButton.Font = Enum.Font.SourceSansBold 
-DexExplorerButton.TextXAlignment = Enum.TextXAlignment.Left 
-DexExplorerButton.ZIndex = 3
-UICorner_7.Parent = DexExplorerButton
-DexExplorerButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/DEX-Explorer/refs/heads/main/Mobile.lua"))()
-end)
-local NamelessAdminButton = Instance.new("TextButton")
-NamelessAdminButton.Name = "NamelessAdminButton"
-NamelessAdminButton.Parent = Frame1
-NamelessAdminButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-NamelessAdminButton.BackgroundTransparency = 1
-NamelessAdminButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-NamelessAdminButton.BorderSizePixel = 0
-NamelessAdminButton.Position = UDim2.new(0.05, 0, 0.3, 0) 
-NamelessAdminButton.Size = UDim2.new(0, 80, 0, 15) 
-NamelessAdminButton.Text = "NameLess Admin"
-NamelessAdminButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-NamelessAdminButton.TextSize = 13 
-NamelessAdminButton.Font = Enum.Font.SourceSansBold 
-NamelessAdminButton.TextXAlignment = Enum.TextXAlignment.Left 
-NamelessAdminButton.ZIndex = 3
-UICorner_8.Parent = NamelessAdminButton
-NamelessAdminButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/101iii101/file/refs/heads/main/Nameless%20admin%20Perm.txt"))()
-end)
-local InfinityYieldButton = Instance.new("TextButton")
-InfinityYieldButton.Name = "InfinityYieldButton"
-InfinityYieldButton.Parent = Frame1
-InfinityYieldButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-InfinityYieldButton.BackgroundTransparency = 1
-InfinityYieldButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-InfinityYieldButton.BorderSizePixel = 0
-InfinityYieldButton.Position = UDim2.new(0.05, 0, 0.5, 0) 
-InfinityYieldButton.Size = UDim2.new(0, 80, 0, 15) 
-InfinityYieldButton.Text = "Infinity Yield"
-InfinityYieldButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-InfinityYieldButton.TextSize = 13 
-InfinityYieldButton.Font = Enum.Font.SourceSansBold 
-InfinityYieldButton.TextXAlignment = Enum.TextXAlignment.Left 
-InfinityYieldButton.ZIndex = 3
-UICorner_9.Parent = InfinityYieldButton
-InfinityYieldButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-end)
-local SimpleSpyButton = Instance.new("TextButton")
-SimpleSpyButton.Name = "SimpleSpyButton"
-SimpleSpyButton.Parent = Frame1
-SimpleSpyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-SimpleSpyButton.BackgroundTransparency = 1
-SimpleSpyButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-SimpleSpyButton.BorderSizePixel = 0
-SimpleSpyButton.Position = UDim2.new(0.55, 0, 0.1, 0)
-SimpleSpyButton.Size = UDim2.new(0, 80, 0, 15)
-SimpleSpyButton.Text = "Simple Spy"
-SimpleSpyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-SimpleSpyButton.TextSize = 13
-SimpleSpyButton.Font = Enum.Font.SourceSansBold
-SimpleSpyButton.TextXAlignment = Enum.TextXAlignment.Right
-SimpleSpyButton.ZIndex = 3
-UICorner_10.Parent = SimpleSpyButton
-SimpleSpyButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/SimpleSpy/refs/heads/main/Mobile.lua"))()
-end)
-local CheckUNCButton = Instance.new("TextButton")
-CheckUNCButton.Name = "CheckUNCButton"
-CheckUNCButton.Parent = Frame1
-CheckUNCButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-CheckUNCButton.BackgroundTransparency = 1
-CheckUNCButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-CheckUNCButton.BorderSizePixel = 0
-CheckUNCButton.Position = UDim2.new(0.55, 0, 0.3, 0)
-CheckUNCButton.Size = UDim2.new(0, 80, 0, 15)
-CheckUNCButton.Text = "Check UNC"
-CheckUNCButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CheckUNCButton.TextSize = 13
-CheckUNCButton.Font = Enum.Font.SourceSansBold
-CheckUNCButton.TextXAlignment = Enum.TextXAlignment.Right
-CheckUNCButton.ZIndex = 3
-UICorner_11.Parent = CheckUNCButton
-CheckUNCButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zunes-Bypassed/UI/refs/heads/main/Unc.lua"))()
-end)
-local DiscordButton = Instance.new("TextButton")
-DiscordButton.Name = "DiscordButton"
-DiscordButton.Parent = Frame1
-DiscordButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-DiscordButton.BackgroundTransparency = 1
-DiscordButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-DiscordButton.BorderSizePixel = 0
-DiscordButton.Position = UDim2.new(0.55, 0, 0.5, 0)
-DiscordButton.Size = UDim2.new(0, 80, 0, 15)
-DiscordButton.Text = "Discord"
-DiscordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-DiscordButton.TextSize = 13
-DiscordButton.Font = Enum.Font.SourceSansBold
-DiscordButton.TextXAlignment = Enum.TextXAlignment.Right
-DiscordButton.ZIndex = 3
-UICorner_12.Parent = DiscordButton
-DiscordButton.MouseButton1Click:Connect(function()
-    setclipboard("https://discord.gg/5FDxfZXM8x")
-end)
-local WAzureButton = Instance.new("TextButton")
-WAzureButton.Name = "WAzureButton"
-WAzureButton.Parent = Frame1
-WAzureButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-WAzureButton.BackgroundTransparency = 1
-WAzureButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-WAzureButton.BorderSizePixel = 0
-WAzureButton.Position = UDim2.new(0.55, 0, 0.7, 0)
-WAzureButton.Size = UDim2.new(0, 80, 0, 15)
-WAzureButton.Text = "W-azure"
-WAzureButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-WAzureButton.TextSize = 13
-WAzureButton.Font = Enum.Font.SourceSansBold
-WAzureButton.TextXAlignment = Enum.TextXAlignment.Right
-WAzureButton.ZIndex = 3
-UICorner_13.Parent = WAzureButton
-WAzureButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
-end)
-local EclipseButton = Instance.new("TextButton")
-EclipseButton.Name = "EclipseButton"
-EclipseButton.Parent = Frame1
-EclipseButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-EclipseButton.BackgroundTransparency = 1
-EclipseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-EclipseButton.BorderSizePixel = 0
-EclipseButton.Position = UDim2.new(0.05, 0, 0.7, 0)
-EclipseButton.Size = UDim2.new(0, 80, 0, 15)
-EclipseButton.Text = "Eclipse"
-EclipseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-EclipseButton.TextSize = 13
-EclipseButton.Font = Enum.Font.SourceSansBold
-EclipseButton.TextXAlignment = Enum.TextXAlignment.Left
-EclipseButton.ZIndex = 3
-UICorner_14.Parent = EclipseButton
-EclipseButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/noname9943/rblxscripts/refs/heads/main/loader.lua'))()
-end)
-local ConsoleScroll = Instance.new("ScrollingFrame")
-ConsoleScroll.Parent = Console_2
-ConsoleScroll.Size = UDim2.new(1, 0, 0.88, 0) 
-ConsoleScroll.Position = UDim2.new(0, 0, 0, 0) 
-ConsoleScroll.BackgroundTransparency = 1
-ConsoleScroll.ScrollBarThickness = 0 
-ConsoleScroll.CanvasSize = UDim2.new(0, 0, 1, 0) 
+local ScrollingFrame = Instance.new("ScrollingFrame")
+ScrollingFrame.Parent = Console_2
+ScrollingFrame.Size = UDim2.new(0.9, 0, 0.7, 0)
+ScrollingFrame.Position = UDim2.new(0.05, 0, 0.1, 0)
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.ScrollBarThickness = 0
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 1, 0)
 local ConsoleBox = Instance.new("TextLabel")
-ConsoleBox.Parent = ConsoleScroll
-ConsoleBox.Size = UDim2.new(1, 0, 0, 0) 
-ConsoleBox.Position = UDim2.new(0, 0, 0, 0)
+ConsoleBox.Parent = ScrollingFrame
+ConsoleBox.Size = UDim2.new(1, 0, 1, 0)
 ConsoleBox.BackgroundTransparency = 1
 ConsoleBox.Font = Enum.Font.SourceSansBold
 ConsoleBox.Text = ""
@@ -1231,16 +727,9 @@ ConsoleBox.TextWrapped = true
 ConsoleBox.TextXAlignment = Enum.TextXAlignment.Left
 ConsoleBox.TextYAlignment = Enum.TextYAlignment.Top
 ConsoleBox.RichText = true
-local function updateScroll()
-    if ConsoleScroll and ConsoleBox then
-        ConsoleBox.Size = UDim2.new(1, 0, 0, ConsoleBox.TextBounds.Y) 
-        ConsoleScroll.CanvasSize = UDim2.new(0, 0, 0, ConsoleBox.TextBounds.Y) 
-    end
-end
-ConsoleBox:GetPropertyChangedSignal("Text"):Connect(updateScroll)
-local UICornerConsole = Instance.new("UICorner")
-UICornerConsole.CornerRadius = UDim.new(0, 10) 
-UICornerConsole.Parent = ConsoleBox
+local UICornerKM = Instance.new("UICorner")
+UICornerKM.CornerRadius = UDim.new(0, 10) 
+UICornerKM.Parent = button
 local buttons = {}
 local buttonWidth = 0.14 * 0.85
 local spacing = 0.03  
@@ -1257,27 +746,32 @@ local function createButton(name, content, posX, isImage)
         button.Image = "rbxassetid://" .. content
         button.ScaleType = Enum.ScaleType.Fit
         button.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+    else
+        button.Text = content
+        button.Font = Enum.Font.SourceSansBold
+        button.TextColor3 = Color3.fromRGB(255, 255, 255)
+        button.TextSize = 16
+        button.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
     end
     buttons[name] = button
 end
-createButton("Warn", "10709753149", 0, true)
-createButton("Error", "10734944554", 1 * (buttonWidth + spacing), true)
-createButton("Output", "10734930632", 2 * (buttonWidth + spacing), true)
-createButton("All", "10747364593", 3 * (buttonWidth + spacing), true)
-createButton("Copy", "10709812159", 4 * (buttonWidth + spacing), true)
-createButton("Clear", "10709819059", 5 * (buttonWidth + spacing) + 0.006, true)
+createButton("Warn", "79250343381203", 0, true)
+createButton("Error", "112299375360792", 1 * (buttonWidth + spacing), true)
+createButton("Output", "86588352038712", 2 * (buttonWidth + spacing), true)
+createButton("All", "All", 3 * (buttonWidth + spacing), false) 
+createButton("Copy", "129383309091174", 4 * (buttonWidth + spacing), true)
+createButton("Clear", "113359299487062", 5 * (buttonWidth + spacing) + 0.006, true)
 local logs = {}
 local filterType = "All"
 local function updateConsole()
-    if not ConsoleScroll or not ConsoleBox then return end
     ConsoleBox.Text = ""
     for _, log in ipairs(logs) do
         if filterType == "All" or log.type == filterType then
             ConsoleBox.Text ..= (ConsoleBox.Text == "" and "" or "\n") .. log.text
         end
     end
-    ConsoleScroll.CanvasSize = UDim2.new(0, 0, 0, ConsoleBox.TextBounds.Y + 20)
-    ConsoleScroll.CanvasPosition = Vector2.new(0, ConsoleScroll.CanvasSize.Y.Offset)
+    ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, ConsoleBox.TextBounds.Y + 20)
+    ScrollingFrame.CanvasPosition = Vector2.new(0, ScrollingFrame.CanvasSize.Y.Offset)
 end
 local function appendConsole(msg, msgType)
     local prefix = "[INFO]:"
@@ -1362,167 +856,6 @@ function X:GetSavedFile()
         return ""
     end
 end
-ListCode = {
-    ["and"]            = "rgb(250, 215, 0)",
-    ["break"]          = "rgb(250, 215, 0)",
-    ["do"]             = "rgb(250, 215, 0)",
-    ["else"]           = "rgb(255, 80, 0)",
-    ["elseif"]         = "rgb(255, 80, 0)",
-    ["end"]            = "rgb(250, 215, 0)",
-    ["false"]          = "rgb(255, 80, 0)",
-    ["for"]            = "rgb(250, 215, 0)",
-    ["function"]       = "rgb(250, 215, 0)",
-    ["goto"]           = "rgb(250, 215, 0)",
-    ["if"]             = "rgb(255, 80, 0)",
-    ["in"]             = "rgb(250, 215, 0)",
-    ["local"]          = "rgb(173, 216, 230)",
-    ["nil"]            = "rgb(255, 80, 0)",
-    ["not"]            = "rgb(250, 215, 0)",
-    ["or"]             = "rgb(250, 215, 0)",
-    ["repeat"]         = "rgb(135, 206, 235)",
-    ["return"]         = "rgb(65, 105, 225)",
-    ["then"]           = "rgb(255, 80, 0)",
-    ["true"]           = "rgb(255, 80, 0)",
-    ["until"]          = "rgb(135, 206, 235)",
-    ["while"]          = "rgb(250, 215, 0)",
-    ["getrawmetatable"] = "rgb(255, 99, 71)",   
-    ["game"]           = "rgb(255, 215, 0)",   
-    ["workspace"]      = "rgb(255, 215, 0)",   
-    ["script"]         = "rgb(255, 215, 0)",   
-    ["math"]           = "rgb(255, 215, 0)",   
-    ["string"]         = "rgb(255, 215, 0)",   
-    ["table"]          = "rgb(255, 215, 0)",   
-    ["print"]          = "rgb(255, 215, 0)",   
-    ["wait"]           = "rgb(255, 215, 0)",   
-    ["BrickColor"]     = "rgb(255, 215, 0)",   
-    ["Color3"]         = "rgb(255, 215, 0)",   
-    ["next"]           = "rgb(255, 215, 0)",   
-    ["pairs"]          = "rgb(255, 215, 0)",   
-    ["ipairs"]         = "rgb(255, 215, 0)",   
-    ["select"]         = "rgb(255, 215, 0)",   
-    ["unpack"]         = "rgb(255, 215, 0)",   
-    ["Instance"]       = "rgb(255, 215, 0)",   
-    ["Vector2"]        = "rgb(255, 215, 0)",   
-    ["Vector3"]        = "rgb(255, 215, 0)",   
-    ["CFrame"]         = "rgb(255, 215, 0)",   
-    ["Ray"]            = "rgb(255, 215, 0)",   
-    ["UDim2"]          = "rgb(255, 215, 0)",   
-    ["Enum"]           = "rgb(255, 215, 0)",   
-    ["assert"]         = "rgb(255, 215, 0)",   
-    ["error"]          = "rgb(255, 215, 0)",   
-    ["warn"]           = "rgb(255, 215, 0)",   
-    ["tick"]           = "rgb(255, 215, 0)",   
-    ["loadstring"]     = "rgb(255, 99, 71)",   
-    ["_G"]             = "rgb(255, 215, 0)",   
-    ["shared"]         = "rgb(255, 215, 0)",   
-    ["getfenv"]        = "rgb(255, 215, 0)",   
-    ["setfenv"]        = "rgb(255, 215, 0)",   
-    ["newproxy"]       = "rgb(255, 215, 0)",   
-    ["setmetatable"]   = "rgb(255, 215, 0)",   
-    ["getmetatable"]   = "rgb(255, 215, 0)",   
-    ["os"]             = "rgb(255, 215, 0)",   
-    ["debug"]          = "rgb(255, 215, 0)",   
-    ["pcall"]          = "rgb(255, 99, 71)",   
-    ["ypcall"]         = "rgb(255, 99, 71)",   
-    ["xpcall"]         = "rgb(255, 99, 71)",   
-    ["rawequal"]       = "rgb(255, 215, 0)",   
-    ["rawset"]         = "rgb(255, 215, 0)",   
-    ["rawget"]         = "rgb(255, 215, 0)",   
-    ["tonumber"]       = "rgb(255, 215, 0)",   
-    ["tostring"]       = "rgb(255, 215, 0)",   
-    ["type"]           = "rgb(255, 215, 0)",   
-    ["typeof"]         = "rgb(255, 215, 0)",   
-    ["_VERSION"]       = "rgb(255, 215, 0)",   
-    ["coroutine"]      = "rgb(255, 215, 0)",   
-    ["delay"]          = "rgb(255, 215, 0)",   
-    ["require"]        = "rgb(255, 215, 0)",   
-    ["spawn"]          = "rgb(255, 215, 0)",   
-    ["LoadLibrary"]    = "rgb(255, 215, 0)",   
-    ["settings"]       = "rgb(255, 215, 0)",   
-    ["stats"]          = "rgb(255, 215, 0)",   
-    ["time"]           = "rgb(255, 215, 0)",   
-    ["UserSettings"]   = "rgb(255, 215, 0)",   
-    ["version"]        = "rgb(255, 215, 0)",   
-    ["Axes"]           = "rgb(255, 215, 0)",   
-    ["ColorSequence"]  = "rgb(255, 215, 0)",   
-    ["Faces"]          = "rgb(255, 215, 0)",   
-    ["ColorSequenceKeypoint"] = "rgb(255, 215, 0)",   
-    ["NumberRange"]    = "rgb(255, 215, 0)",   
-    ["NumberSequence"] = "rgb(255, 215, 0)",   
-    ["NumberSequenceKeypoint"] = "rgb(255, 215, 0)",   
-    ["gcinfo"]         = "rgb(255, 215, 0)",   
-    ["elapsedTime"]    = "rgb(255, 215, 0)",   
-    ["collectgarbage"] = "rgb(255, 215, 0)",   
-    ["PhysicalProperties"] = "rgb(255, 215, 0)",   
-    ["Rect"]           = "rgb(255, 215, 0)",   
-    ["Region3"]        = "rgb(255, 215, 0)",   
-    ["Region3int16"]   = "rgb(255, 215, 0)",   
-    ["UDim"]           = "rgb(255, 215, 0)",   
-    ["Vector2int16"]   = "rgb(255, 215, 0)",   
-    ["Vector3int16"]   = "rgb(255, 215, 0)",   
-    ["HttpGet"] = "rgb(255, 165, 0)"  
-}
-local function SetSyntax(str)
-    if not ListCode then
-        return str
-    end
-    local stringColor = "rgb(255, 140, 0)"  
-    local urlColor = "rgb(135, 206, 235)"  
-    local booleanColor = "rgb(255, 233, 0)"
-    str = str:gsub('".-"', function(s)
-        return '<font color="' .. stringColor .. '">' .. s .. '</font>'
-    end)
-    str = str:gsub("%f[%a](true)%f[%A]", function(b)
-        return '<font color="' .. booleanColor .. '">' .. b .. '</font>'
-    end)
-    str = str:gsub("%f[%a](false)%f[%A]", function(b)
-        return '<font color="' .. booleanColor .. '">' .. b .. '</font>'
-    end)
-    str = str:gsub("http[s]?://[%w%p%-_/%.%?=%&]+", function(url)
-        return '<font color="' .. urlColor .. '">' .. url .. '</font>'
-    end)
-    for keyword, color in pairs(ListCode) do
-        local pattern = ("%f[%a]" .. keyword .. "%f[%A]")
-        str = str:gsub(pattern, '<font color="' .. color .. '">' .. keyword .. '</font>')
-    end
-    return str
-end
-local ScrollingFrame = Instance.new("ScrollingFrame")
-ScrollingFrame.Parent = Executor_2
-ScrollingFrame.Position = UDim2.new(0.07, 0, 0.007, 0)
-ScrollingFrame.Size = UDim2.new(0, 425, 0, 230)
-ScrollingFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ScrollingFrame.BorderSizePixel = 0
-ScrollingFrame.CanvasSize = UDim2.new(0, 425, 0, 230) 
-ScrollingFrame.ScrollBarThickness = 0 
-ScrollingFrame.HorizontalScrollBarInset = Enum.ScrollBarInset.ScrollBar 
-ScrollingFrame.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
-local Code = Instance.new("TextBox")
-Code.Name = "Code"
-Code.Parent = ScrollingFrame 
-Code.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Code.BorderSizePixel = 0
-Code.Size = UDim2.new(1, -5, 1, 0) 
-Code.Font = Enum.Font.SourceSansBold
-Code.PlaceholderColor3 = Color3.fromRGB(88, 88, 88)
-Code.PlaceholderText = 'print("ReveliX")'
-Code.Text = ""
-Code.TextColor3 = Color3.fromRGB(255, 255, 255)
-Code.TextSize = 12
-Code.TextXAlignment = Enum.TextXAlignment.Left
-Code.TextYAlignment = Enum.TextYAlignment.Top
-Code.ClearTextOnFocus = false
-Code.MultiLine = true
-Code.RichText = true
-Code.TextWrapped = false 
-local UICorner_9 = Instance.new("UICorner")
-UICorner_9.Parent = Code
-Code:GetPropertyChangedSignal("Text"):Connect(function()
-    local textService = game:GetService("TextService")
-    local textSize = textService:GetTextSize(Code.Text, Code.TextSize, Code.Font, Vector2.new(math.huge, math.huge))
-    ScrollingFrame.CanvasSize = UDim2.new(0, math.max(425, textSize.X + 10), 0, math.max(230, textSize.Y + 10))
-end)
-local rawCode = ""
 local NumberLine = Instance.new("TextLabel")
 NumberLine.Name = "NumberLine"
 NumberLine.Parent = Executor_2
@@ -1536,36 +869,43 @@ NumberLine.TextColor3 = Color3.fromRGB(150, 150, 150)
 NumberLine.TextSize = 12
 NumberLine.TextXAlignment = Enum.TextXAlignment.Right
 NumberLine.TextYAlignment = Enum.TextYAlignment.Top
+NumberLine.TextWrapped = false
 NumberLine.ClipsDescendants = true 
+NumberLine.TextWrapped = false
+NumberLine.TextScaled = false 
+NumberLine.TextTruncate = Enum.TextTruncate.AtEnd 
+local UICorner_NumberLine = Instance.new("UICorner")
+UICorner_NumberLine.Parent = NumberLine
+UICorner_NumberLine.CornerRadius = UDim.new(0, 10) 
+local Code = Instance.new("TextBox")
+Code.Name = "Code"
+Code.Parent = Executor_2
+Code.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Code.BorderSizePixel = 0
+Code.Position = UDim2.new(0.07, 0, 0.007, 0)
+Code.Size = UDim2.new(0, 425, 0, 230)
+Code.Font = Enum.Font.SourceSansBold
+Code.PlaceholderColor3 = Color3.fromRGB(88, 88, 88)
+Code.PlaceholderText = 'print("ReveliX 2.4")'
+Code.Text = ""
+Code.TextColor3 = Color3.fromRGB(255, 255, 255)
+Code.TextSize = 12
+Code.TextWrapped = true
+Code.TextXAlignment = Enum.TextXAlignment.Left
+Code.TextYAlignment = Enum.TextYAlignment.Top
+Code.ClearTextOnFocus = false
+Code.MultiLine = true
+Code.TextTruncate = Enum.TextTruncate.AtEnd
+local UICorner_9 = Instance.new("UICorner")
+UICorner_9.Parent = Code
 Code:GetPropertyChangedSignal("Text"):Connect(function()
     local lines = Code.Text:split("\n")
-    local maxLines = 19
-    local lineNumbers = table.create(math.min(#lines, maxLines), "")
+    local lineNumbers = ""
+    local maxLines = 19 
     for i = 1, math.min(#lines, maxLines) do
-        lineNumbers[i] = tostring(i)
+        lineNumbers = lineNumbers .. i .. "\n"
     end
-    NumberLine.Text = table.concat(lineNumbers, "\n")
-    local rawLines = {}
-    for i, line in ipairs(lines) do
-        rawLines[i] = line:gsub("<[^>]+>", "")  
-    end
-    rawCode = table.concat(rawLines, "\n")
-    if #lines <= maxLines then
-        task.defer(function()  
-            local highlightedLines = {}
-            for i, line in ipairs(rawLines) do
-                highlightedLines[i] = SetSyntax(line)  
-            end
-            local highlightedText = table.concat(highlightedLines, "\n")
-            if Code.Text ~= highlightedText then
-                Code.Text = highlightedText
-            end
-        end)
-    else
-        if Code.Text ~= rawCode then
-            Code.Text = rawCode
-        end
-    end
+    NumberLine.Text = lineNumbers
 end)
 local function createButton(name, position, text, parent)
     local button = Instance.new("TextButton")
@@ -1600,6 +940,12 @@ local function createButton(name, position, content, parent, isImage)
         button.Image = "rbxassetid://" .. content
         button.ScaleType = Enum.ScaleType.Fit
         button.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+    else
+        button.Text = content
+        button.Font = Enum.Font.SourceSansBold
+        button.TextColor3 = Color3.fromRGB(255, 255, 255)
+        button.TextSize = 12
+        button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     end
     return button
 end
@@ -1612,12 +958,12 @@ local function createRoundedButton(name, position, image, parent, hasImage)
     UICorner.Parent = button
     return button
 end
-local Clear = createRoundedButton("Clear", UDim2.new(0, startX, 0.903, 0), "10709819059", Executor_2, true)
-local Execute = createRoundedButton("Execute", UDim2.new(0, startX + buttonWidth + buttonSpacing, 0.903, 0), "10734943902", Executor_2, true)
-local Copy = createRoundedButton("Copy", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 2, 0.903, 0), "10709812159", Executor_2, true)
-local ExecuteClipboard = createRoundedButton("ExecuteClipboard", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 3, 0.903, 0), "10709799288", Executor_2, true)
-local AutoExe = createRoundedButton("AutoExe", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 4, 0.903, 0), "10734923868", Executor_2, true)
-local DeleteAutoExe = createRoundedButton("DeleteAutoExe", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 5, 0.903, 0), "10747383819", Executor_2, true)
+local Clear = createRoundedButton("Clear", UDim2.new(0, startX, 0.903, 0), "113359299487062", Executor_2, true)
+local Execute = createRoundedButton("Execute", UDim2.new(0, startX + buttonWidth + buttonSpacing, 0.903, 0), "125594054578785", Executor_2, true)
+local Paste = createRoundedButton("Paste", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 2, 0.903, 0), "129383309091174", Executor_2, true)
+local ExecuteClipboard = createRoundedButton("ExecuteClipboard", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 3, 0.903, 0), "72822546519104", Executor_2, true)
+local AutoExe = createRoundedButton("Auto Exe", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 4, 0.903, 0), "Auto Exe", Executor_2, false)
+local DeleteAutoExe = createRoundedButton("Delete Auto Exe", UDim2.new(0, startX + (buttonWidth + buttonSpacing) * 5, 0.903, 0), "Delete Auto Exe", Executor_2, false)
 ExecuteClipboard.MouseButton1Click:Connect(function()
     local clipboardContent = getclipboard()
     loadstring(clipboardContent)()
@@ -1640,7 +986,7 @@ local function NVXVLM()
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent.Executor.Visible = true
 		script.Parent.Parent.Parent.Home.Visible = false
-		script.Parent.Parent.Parent.Save.Visible = false
+		script.Parent.Parent.Parent.Forward.Visible = false
 		script.Parent.Parent.Parent.Console.Visible = false
 		script.Parent.Parent.Parent.Settings.Visible = false
 		script.Parent.Parent.Parent.Search.Visible = false
@@ -1654,7 +1000,7 @@ local function JRLI()
 		script.Parent.Parent.Parent.Home.Visible = false
 		script.Parent.Parent.Parent.Search.Visible = true
 		script.Parent.Parent.Parent.Console.Visible = false
-		script.Parent.Parent.Parent.Save.Visible = false
+		script.Parent.Parent.Parent.Forward.Visible = false
 		script.Parent.Parent.Parent.Settings.Visible = false
 	end)
 end
@@ -1665,7 +1011,7 @@ local function ZRKA()
 		script.Parent.Parent.Parent.Executor.Visible = false
 		script.Parent.Parent.Parent.Home.Visible = true
 		script.Parent.Parent.Parent.Console.Visible = false
-		script.Parent.Parent.Parent.Save.Visible = false
+		script.Parent.Parent.Parent.Forward.Visible = false
 		script.Parent.Parent.Parent.Settings.Visible = false
 		script.Parent.Parent.Parent.Search.Visible = false
 	end)
@@ -1676,7 +1022,7 @@ local function JRWL()
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent.Executor.Visible = false
 		script.Parent.Parent.Parent.Home.Visible = false
-		script.Parent.Parent.Parent.Save.Visible = false
+		script.Parent.Parent.Parent.Forward.Visible = false
 		script.Parent.Parent.Parent.Settings.Visible = false
 		script.Parent.Parent.Parent.Console.Visible = true
 		script.Parent.Parent.Parent.Search.Visible = false
@@ -1689,16 +1035,16 @@ local function JRL()
 		script.Parent.Parent.Parent.Executor.Visible = false
 		script.Parent.Parent.Parent.Home.Visible = false
 		script.Parent.Parent.Parent.Console.Visible = false
-		script.Parent.Parent.Parent.Save.Visible = false
+		script.Parent.Parent.Parent.Forward.Visible = false
 		script.Parent.Parent.Parent.Search.Visible = false
 		script.Parent.Parent.Parent.Settings.Visible = true
 	end)
 end
 coroutine.wrap(JRL)()
 local function MXD() 
-	local script = Instance.new('LocalScript', Save)
+	local script = Instance.new('LocalScript', Forward)
 	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Parent.Save.Visible = true
+		script.Parent.Parent.Parent.Forward.Visible = true
 		script.Parent.Parent.Parent.Executor.Visible = false
 		script.Parent.Parent.Parent.Home.Visible = false
 		script.Parent.Parent.Parent.Console.Visible = false
@@ -1761,7 +1107,8 @@ local function PMROOSA()
     local TextBox = script.Parent.Parent
     local ExecuteButton = script.Parent
     ExecuteButton.MouseButton1Click:Connect(function()
-        loadstring(rawCode)()
+        local luaCode = Code.Text
+        loadstring(luaCode)()
     end)
 end
 coroutine.wrap(PMROOSA)()
@@ -1809,9 +1156,9 @@ local function BJOYQ()
 end
 coroutine.wrap(BJOYQ)()
 local function NKFJBJX() 
-	local script = Instance.new("LocalScript", Copy)
+	local script = Instance.new("LocalScript", Paste)
 end
-Copy.MouseButton1Click:Connect(function()
-    setclipboard(Code.Text)
+Paste.MouseButton1Click:Connect(function()
+	Code.Text = getclipboard()
 end)
-coroutine.wrap(NKFJBJX)()
+NotificationLibrary:SendNotification("Success", "Load Complete", 10)
