@@ -578,6 +578,7 @@ local function UpdateFileList()
         FileItem.BackgroundTransparency = 1
         FileItem.Size = UDim2.new(1, -10, 0, 30)
         FileItem.Position = UDim2.new(0, 5, 0, yOffset)
+        FileItem.ClipsDescendants = true 
         local FileItemCorner = Instance.new("UICorner")
         FileItemCorner.CornerRadius = UDim.new(0, 10)
         FileItemCorner.Parent = FileItem
@@ -586,11 +587,14 @@ local function UpdateFileList()
         FileNameLabel.Text = fileName
         FileNameLabel.Font = Enum.Font.SourceSansBold
         FileNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-        FileNameLabel.Size = UDim2.new(0.6, 0, 1, 0)
+        FileNameLabel.Size = UDim2.new(0.6, -10, 1, 0)
+        FileNameLabel.Position = UDim2.new(0.05, 0, 0, 0)
         FileNameLabel.TextSize = 15
         FileNameLabel.BackgroundTransparency = 1
         FileNameLabel.TextXAlignment = Enum.TextXAlignment.Left
-        FileNameLabel.Position = UDim2.new(0.05, 0, 0, 0)
+        FileNameLabel.TextScaled = false 
+        FileNameLabel.TextWrapped = true 
+        FileNameLabel.ClipsDescendants = true 
         local ExecuteButton = Instance.new("ImageButton")
         ExecuteButton.Parent = FileItem
         ExecuteButton.Size = UDim2.new(0, 20, 0, 20)
@@ -863,7 +867,7 @@ SearchBox.FocusLost:Connect(function(enterPressed)
             CopyButton.Parent = ScriptBox
             CopyButton.Size = UDim2.new(0, 20, 0, 20)
             CopyButton.Position = UDim2.new(1.03, -70, 0.95, -15)
-            CopyButton.Image = "rbxassetid://10709799288"
+            CopyButton.Image = "rbxassetid://10709812159"
             CopyButton.BackgroundTransparency = 1
             CopyButton.ScaleType = Enum.ScaleType.Fit
             CopyButton.MouseButton1Click:Connect(function()
@@ -878,6 +882,29 @@ SearchBox.FocusLost:Connect(function(enterPressed)
             ExecuteButton.ScaleType = Enum.ScaleType.Fit
             ExecuteButton.MouseButton1Click:Connect(function()
                 loadstring(script.script)()
+            end)
+            local SaveButton = Instance.new("ImageButton")
+            SaveButton.Parent = ScriptBox
+            SaveButton.Size = UDim2.new(0, 20, 0, 20)
+            SaveButton.Position = UDim2.new(1.03, -140, 0.95, -15) 
+            SaveButton.Image = "rbxassetid://10734941499"
+            SaveButton.BackgroundTransparency = 1
+            SaveButton.ScaleType = Enum.ScaleType.Fit
+            SaveButton.MouseButton1Click:Connect(function()
+                local fileName, content = script.title, script.script
+                if fileName ~= "" and content ~= "" then
+                    local filePath = X.Folder .. "/" .. fileName .. ".lua"
+                    if isfile(filePath) then
+                        local existingContent = readfile(filePath)
+                        if existingContent ~= content then
+                            writefile(filePath, content)
+                        end
+                    else
+                        X:SaveFile(fileName, content)
+                        table.insert(SavedFiles, fileName)
+                    end
+                    UpdateFileList()
+                end
             end)
             if script.keyLink and script.keyLink ~= "" then
                 local GetKeyButton = Instance.new("ImageButton")
@@ -1428,7 +1455,7 @@ ScrollingFrame.Position = UDim2.new(0.07 - 0.05, 0, 0.007, 0)
 ScrollingFrame.Size = UDim2.new(0, 425 * 1.05, 0, 230)
 ScrollingFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ScrollingFrame.BorderSizePixel = 0
-ScrollingFrame.CanvasSize = UDim2.new(0, 425, 0, 230)
+ScrollingFrame.CanvasSize = UDim2.new(0, 425 * 1.05, 0, 230)
 ScrollingFrame.ScrollBarThickness = 0
 ScrollingFrame.HorizontalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 ScrollingFrame.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
@@ -1445,6 +1472,7 @@ Code.TextXAlignment = Enum.TextXAlignment.Left
 Code.TextYAlignment = Enum.TextYAlignment.Top
 Code.MultiLine = true
 Code.RichText = true
+Code.ClearTextOnFocus = false
 Code.TextWrapped = false
 local UICorner_9 = Instance.new("UICorner")
 UICorner_9.Parent = Code
@@ -1473,18 +1501,33 @@ NumberLine.ClipsDescendants = true
 local UICornerLine = Instance.new("UICorner")
 UICornerLine.CornerRadius = UDim.new(0, 10)  
 UICornerLine.Parent = NumberLine
-local maxLines = 19
-Code.Text = SetSyntax(Code.Text:gsub("<[^>]+>", ""))
+maxLines = 19
+rawText = Code.Text:gsub("<[^>]+>", "")
+isEditing = false
+Code.Text = SetSyntax(rawText)
+Code.Focused:Connect(function()
+    if not isEditing then
+        isEditing = true
+        Code.Text = rawText
+    end
+end)
+Code.FocusLost:Connect(function()
+    isEditing = false
+    Code.Text = SetSyntax(rawText)
+end)
 Code:GetPropertyChangedSignal("Text"):Connect(function()
-    local lines = Code.Text:split("\n")
-    local lineNumbers = {}
+    if isEditing then
+        rawText = Code.Text
+    end
+    lines = rawText:split("\n")
+    lineNumbers = {}
     for i = 1, math.min(#lines, maxLines) do
         lineNumbers[i] = tostring(i)
     end
     NumberLine.Text = table.concat(lineNumbers, "\n")
-    if #lines <= maxLines then
+    if not isEditing and #lines <= maxLines then
         task.spawn(function()
-            local highlightedText = SetSyntax(Code.Text:gsub("<[^>]+>", ""))
+            highlightedText = SetSyntax(rawText)
             if Code.Text ~= highlightedText then
                 Code.Text = highlightedText
             end
@@ -1672,12 +1715,12 @@ local function PEWWH()
 end
 coroutine.wrap(PEWWH)()
 local function PHFF() 
-	local script = Instance.new('LocalScript', Clear)
-	local TextBox = script.Parent.Parent
-	local ClearButton = script.Parent
-	ClearButton.MouseButton1Click:Connect(function()
-		Code.Text = ""
-	end)
+    local script = Instance.new('LocalScript', Clear)
+    local ClearButton = script.Parent
+    ClearButton.MouseButton1Click:Connect(function()
+        rawText = "" 
+        Code.Text = "" 
+    end)
 end
 coroutine.wrap(PHFF)()
 local function PMROOSA() 
