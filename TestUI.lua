@@ -1,3 +1,14 @@
+-- internal funcs
+local _enableautoexec = clonefunction( client.enableautoexec )
+setreadonly(client, false);
+client.enableautoexec = nil
+client.execute = nil
+setreadonly(client, true);
+
+getgenv().client = nil
+
+--autoexec func
+_enableautoexec()
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
 local userId = player.UserId
@@ -70,7 +81,7 @@ local TextLabel_14 = Instance.new("TextLabel")
 local UICorner_17 = Instance.new("UICorner")
 local OpenButton = Instance.new("ImageButton")
 local UICorner_18 = Instance.new("UICorner")
-ScreenGui.Parent = game.CoreGui
+ScreenGui.Parent = cloneref(game:GetService("CoreGui"))
 Main.Name = "Main"
 Main.Parent = ScreenGui
 Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
