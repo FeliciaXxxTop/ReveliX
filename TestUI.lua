@@ -7,7 +7,7 @@ setreadonly(client, true);
 
 getgenv().client = nil
 
---autoexec func
+-- autoexec func
 _enableautoexec()
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
