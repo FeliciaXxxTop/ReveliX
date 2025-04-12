@@ -1,7 +1,7 @@
 # ReveliX
 
-**ReveliX** is a powerful Roblox Android update powered by [getrift.lol](https://getrift.lol).  
-Optimized for smooth performance, sleek visuals, and frequent improvements tailored for mobile execution.
+**ReveliX** is a powerful Roblox Android **executor** powered by [getrift.lol](https://getrift.lol).  
+Built for mobile users, ReveliX delivers fast script execution, a clean UI, and regular updates—all optimized for Android devices.
 
 ## Version
 
@@ -16,12 +16,12 @@ Visit the official ReveliX website: [getrevelix.xyz](https://getrevelix.xyz)
 - [ReveliX Discord](https://discord.gg/revelix)  
 - [Rift Discord](https://discord.gg/rPTYdRat2M)
 
-Join our communities for support, updates, and exclusive features.
+Join our communities for support, announcements, and exclusive features.
 
 ## Credits
 
 - **ReveliX Team** – Core Development & UI  
-- **getrift.lol** – Backend & Support
+- **getrift.lol** – Backend & Infrastructure
 
 ## Disclaimer
 
