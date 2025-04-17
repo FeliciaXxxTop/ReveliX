@@ -1051,7 +1051,7 @@ local function SHMN_script() -- ExecBox.LocalScript
 		end
 	end)
 	
-	textBox.Text = 'print("Welcome to Rift Android!")'
+	textBox.Text = "--[[\nThanks for using Revelix Android!\nv1.5.0\n]]--"
 	updateHighlighting()
 	
 end
