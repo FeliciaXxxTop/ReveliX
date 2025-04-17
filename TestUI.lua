@@ -1,15 +1,3 @@
--- [[ Internal Functions ]] --
-local _enableautoexec = clonefunction( client.enableautoexec )
-setreadonly(client, false);
-client.enableautoexec = nil
-client.execute = nil
-setreadonly(client, true);
-
-getgenv().client = nil
-
--- [[ Autoexecute ]] --
-_enableautoexec()
-
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
 local userId = player.UserId
@@ -1796,3 +1784,15 @@ Copy.MouseButton1Click:Connect(function()
     setclipboard(Code.Text)
 end)
 coroutine.wrap(NKFJBJX)()
+
+-- [[ Internal Functions ]] --
+local _enableautoexec = clonefunction( client.enableautoexec )
+setreadonly(client, false);
+client.enableautoexec = nil
+client.execute = nil
+setreadonly(client, true);
+
+getgenv().client = nil
+
+-- [[ Autoexecute ]] --
+_enableautoexec()
