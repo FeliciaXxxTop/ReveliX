@@ -1,3 +1,12 @@
+-- [[ Internal Functions ]] --
+local _enableautoexec = clonefunction( client.enableautoexec )
+setreadonly(client, false);
+client.enableautoexec = nil
+client.execute = nil
+setreadonly(client, true);
+
+getgenv().client = nil
+
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 
@@ -73,6 +82,7 @@ local savedKeyPremium = X:GetSavedKey(true)
 if savedKeyDefault ~= "" then
     local response = KeyReveliX.validateDefaultKey(savedKeyDefault)
     if response == trueData then
+        _enableautoexec()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
         return
     end
@@ -81,6 +91,7 @@ end
 if savedKeyPremium ~= "" then
     local premiumResponse = KeyReveliX.validatePremiumKey(savedKeyPremium)
     if premiumResponse == trueData then
+        _enableautoexec()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
         return
     end
@@ -221,6 +232,7 @@ CheckKeyButton.MouseButton1Click:Connect(function()
             X:SaveKey(key)  
             task.wait()
             Frame:Destroy()
+            _enableautoexec()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
         else
             local premiumResponse = KeyReveliX.validatePremiumKey(key)
@@ -230,6 +242,7 @@ CheckKeyButton.MouseButton1Click:Connect(function()
                 X:SaveKey(key)  
                 task.wait()
                 Frame:Destroy()
+                _enableautoexec()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
             else
                 ResultLabel.Text = "Invalid Key!"
