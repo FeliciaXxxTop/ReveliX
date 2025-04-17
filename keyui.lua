@@ -8,13 +8,13 @@ end
 
 local playerGui = Player:FindFirstChild("PlayerGui") or Player:WaitForChild("PlayerGui")
 
-local KeyReveliX = loadstring(game:HttpGet("https://cdn.keyguardian.org/library/v1.0.0.lua"))()
-local trueData = "61e08a4499d142fba80b1670ae5d2c75"
-local falseData = "998574f37697474eb55046b23fbcacbe"
+local KeyReveliX = loadstring(game:HttpGet('https://raw.githubusercontent.com/nathzzi/Rift-Android/refs/heads/main/keyguardian/keyguardianlibrary.lua'))()
+local trueData = "729b2d0813534812951c1ead7ee7e10a"
+local falseData = "a9051db43f4e452fa47e4c81a0727cb6"
 
 KeyReveliX.Set({
-  publicToken = "c57ffe1d77594a46a0514f70c1bbd0f4",
-  privateToken = "dcf6520bda414cc5bf1ff620e3478ca1",
+    publicToken = "e423a2fdba5842a68919e6f8fb714064",
+    privateToken = "930ecef53c674a3bb5bca1576577716f",
     trueData = trueData,
     falseData = falseData,
 })
