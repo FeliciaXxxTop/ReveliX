@@ -1,3 +1,15 @@
+-- [[ Internal Functions ]] --
+local _enableautoexec = clonefunction( client.enableautoexec )
+setreadonly(client, false);
+client.enableautoexec = nil
+client.execute = nil
+setreadonly(client, true);
+
+getgenv().client = nil
+
+-- [[ Autoexecute ]] --
+_enableautoexec()
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer  
 local userId = player.UserId
@@ -1029,7 +1041,7 @@ TextLabel_2.BackgroundTransparency = 1
 TextLabel_2.Position = UDim2.new(0.008, 0, 0.97, 0) 
 TextLabel_2.Size = UDim2.new(0, 100, 0, 20)
 TextLabel_2.Font = Enum.Font.SourceSansBold
-TextLabel_2.Text = "Version: 2.662.537"
+TextLabel_2.Text = "Version: 2.668.660"
 TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_2.TextSize = 14
 local UICorner_TextLabel2 = Instance.new("UICorner")
