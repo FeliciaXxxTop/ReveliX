@@ -1,12 +1,3 @@
--- [[ Internal Functions ]] --
-local _enableautoexec = clonefunction( client.enableautoexec )
-setreadonly(client, false);
-client.enableautoexec = nil
-client.execute = nil
-setreadonly(client, true);
-
-getgenv().client = nil
-
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 
@@ -233,7 +224,7 @@ CheckKeyButton.MouseButton1Click:Connect(function()
             task.wait()
             Frame:Destroy()
             _enableautoexec()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
         else
             local premiumResponse = KeyReveliX.validatePremiumKey(key)
             if premiumResponse == trueData then
@@ -243,7 +234,7 @@ CheckKeyButton.MouseButton1Click:Connect(function()
                 task.wait()
                 Frame:Destroy()
                 _enableautoexec()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
             else
                 ResultLabel.Text = "Invalid Key!"
                 ResultLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
