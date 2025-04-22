@@ -1,4 +1,4 @@
 {
   "ui": "loadstring(game:HttpGet('https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/keyui.lua'))()",
-  "version": "2.668.660"
+  "version": "2.669.664"
 }
