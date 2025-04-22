@@ -73,7 +73,6 @@ local savedKeyPremium = X:GetSavedKey(true)
 if savedKeyDefault ~= "" then
     local response = KeyReveliX.validateDefaultKey(savedKeyDefault)
     if response == trueData then
-        _enableautoexec()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
         return
     end
@@ -82,7 +81,6 @@ end
 if savedKeyPremium ~= "" then
     local premiumResponse = KeyReveliX.validatePremiumKey(savedKeyPremium)
     if premiumResponse == trueData then
-        _enableautoexec()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
         return
     end
@@ -223,7 +221,6 @@ CheckKeyButton.MouseButton1Click:Connect(function()
             X:SaveKey(key)  
             task.wait()
             Frame:Destroy()
-            _enableautoexec()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
         else
             local premiumResponse = KeyReveliX.validatePremiumKey(key)
@@ -233,7 +230,6 @@ CheckKeyButton.MouseButton1Click:Connect(function()
                 X:SaveKey(key)  
                 task.wait()
                 Frame:Destroy()
-                _enableautoexec()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
             else
                 ResultLabel.Text = "Invalid Key!"
