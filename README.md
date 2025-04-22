@@ -5,7 +5,7 @@ Built for mobile users, ReveliX delivers fast script execution, a clean UI, and 
 
 ## Version
 
-**2.668.660** – Latest stable release
+**2.669.664** – Latest stable release
 
 ## Website
 
