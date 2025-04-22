@@ -168,7 +168,7 @@ Version.BorderSizePixel = 0
 Version.Position = UDim2.new(0.36714977, 0, 0.5, 0)
 Version.Size = UDim2.new(0, 77, 0, 17)
 Version.Font = Enum.Font.FredokaOne
-Version.Text = "1.5.0"
+Version.Text = "1.6.0"
 Version.TextColor3 = Color3.fromRGB(255, 255, 255)
 Version.TextSize = 13.000
 
@@ -1051,7 +1051,7 @@ local function SHMN_script() -- ExecBox.LocalScript
 		end
 	end)
 	
-	textBox.Text = "--[[\nThanks for using Revelix Android!\nv1.5.0\n]]--"
+	textBox.Text = "--[[\nThanks for using Revelix Android!\nv1.6.0\n]]--"
 	updateHighlighting()
 	
 end
