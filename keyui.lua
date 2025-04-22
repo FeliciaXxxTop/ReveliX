@@ -74,7 +74,7 @@ if savedKeyDefault ~= "" then
     local response = KeyReveliX.validateDefaultKey(savedKeyDefault)
     if response == trueData then
         _enableautoexec()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
         return
     end
 end
@@ -83,7 +83,7 @@ if savedKeyPremium ~= "" then
     local premiumResponse = KeyReveliX.validatePremiumKey(savedKeyPremium)
     if premiumResponse == trueData then
         _enableautoexec()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/TestUI.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FeliciaXxxTop/ReveliX/refs/heads/main/new_ui.lua"))()
         return
     end
 end
