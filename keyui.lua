@@ -9,18 +9,18 @@ end
 local playerGui = Player:FindFirstChild("PlayerGui") or Player:WaitForChild("PlayerGui")
 
 local KeyReveliX = loadstring(game:HttpGet('https://raw.githubusercontent.com/nathzzi/Rift-Android/refs/heads/main/keyguardian/keyguardianlibrary.lua'))()
-local trueData = "729b2d0813534812951c1ead7ee7e10a"
-local falseData = "a9051db43f4e452fa47e4c81a0727cb6"
+local trueData = "066ecf0a10a14b14a2bc8a76d7d86e82"
+local falseData = "f44672e68ceb4cf5b8d4f09596bf4e2d"
 
 KeyReveliX.Set({
-    publicToken = "e423a2fdba5842a68919e6f8fb714064",
-    privateToken = "930ecef53c674a3bb5bca1576577716f",
+    publicToken = "c57ffe1d77594a46a0514f70c1bbd0f4",
+    privateToken = "dcf6520bda414cc5bf1ff620e3478ca1",
     trueData = trueData,
     falseData = falseData,
 })
 
 local X = {} do
-    X.Folder = "FW"
+    X.Folder = "RX"
 
     function X:SetFolder(folder)
         self.Folder = folder
